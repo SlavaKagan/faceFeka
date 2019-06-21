@@ -90,7 +90,69 @@ nav ul .sidenav:hover {
   border-bottom-style: solid;
 }
 
+/* *** BIG CONTAINER *** */
+
+.big-container {
+  margin: 70px 20% 0 20%;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.left-section {
+  position: fixed;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /*align-content: space-between;*/
+  text-align: center;
+
+  top: 50px;
+  height: 100%;
+  width: 10%;
+  padding-top: 20px;
+
+  overflow: hidden;
+}
+
+/* *** PROFILE *** */
+
+.profile {
+  height: 500px;
+}
+
+.profile-picture img {
+  width: 180px;
+  height: 180px;
+  border: 1px solid #c8c8c8;
+}
+
+.profile-name {
+  margin-top: 10px;
+}
+
+/* *** MAIN-SECTION *** */
+
+.main-section {
+  flex-grow: 2;
+  /*margin-left: 20%;*/
+}
+
 /* *** GENERAL *** */
 .no-outline {
   outline: none;
+}
+
+.circle {
+  border-radius: 100%;
+}
+
+.cover {
+  object-fit: cover;
 }
