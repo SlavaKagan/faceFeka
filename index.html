@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="resources/css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel|Lato|Nanum+Gothic|Open+Sans+Condensed:300|Roboto&display=swap">
@@ -10,71 +11,206 @@
 </head>
 
 <body>
+
   <header>
     <nav>
       <ul>
         <li>
-          <img src="resources/img/logo.png">
+          <div class="logo">
+            <img src="resources/img/navbar/logo/logo.png">
+          </div>
         </li>
 
         <li>
-          <input type="text" placeholder="Search.." class="no-outline">
+          <div class="search-bar">
+            <img src="resources/img/navbar/search.svg">
+            <input type="text" placeholder="Search..">
+          </div>
         </li>
 
-        <li class="sidenav push-right"><i class="fas fa-home"></i> Home</li>
-        <li class="sidenav"><i class="fas fa-user-circle"></i> Profile</li>
-        <li class="sidenav"><i class="fas fa-users"></i> Friends</li>
-        <li class="sidenav"><i class="fas fa-envelope"></i> Notifications</li>
+        <div class="sidenav push-right">
+          <li>
+            <img src="resources/img/navbar/home.svg">
+            <span>Home</span>
+          </li>
+          <li>
+            <img src="resources/img/navbar/profile.svg">
+            <span>Profile</span>
+          </li>
+          <li>
+            <img src="resources/img/navbar/friends.svg">
+            <span>Friends</span>
+          </li>
+          <li>
+            <img src="resources/img/navbar/notifications.svg">
+            <span>Notifications</span>
+          </li>
+        </div>
+
       </ul>
     </nav>
   </header>
 
   <div class="big-container">
+
     <div class="section left-section">
-      <!--      IN CASE THERE WILL BE MORE INFO HERE, SHOULD ADD ANOTHER CHILD DIV TO LEFT-SECTION -->
+
       <div class="profile">
+
         <div class="profile-picture circle">
-          <img src="resources/img/profile.jpg" class="cover">
-          <div class="user-panel-container"> <!-- HIDDEN-USER-PANEL -->
+          <img src="resources/img/profilepicdemo/profile.jpg" class="cover">
+          <div class="user-panel-container">
             <div class="user-panel">
-              <div>
-                <i class="fas fa-user"></i><span>Friends</span>
+
+              <div class="panel-option">
+                <i class="fas fa-user"></i>
+                <span>Friends</span>
               </div>
-              <div>
-                <i class="fas fa-clone"></i><span>Posts</span>
+
+              <div class="panel-option">
+                <i class="fas fa-clone"></i>
+                <span>Posts</span>
               </div>
-              <div>
-                <i class="fa fa-clone"></i><span>Something</span>
+
+              <div class="panel-option">
+                <i class="fas fa-clone"></i>
+                <span>Something</span>
               </div>
+
             </div>
           </div>
         </div>
+
         <div class="profile-name">
           <label name="name">Lorem Ipsum Dolor</label>
         </div>
-      </div>
-
-      <div>
 
       </div>
+
     </div>
 
     <div class="section main-section">
       <div class="news-feed">
+
         <div class="new-post">
 
-        </div>
-
-        <div class="all-posts">
-          <div class="post">
-
+          <div class="head">
+            <div class="create-post">
+              <h2>Create Post</h2>
+            </div>
           </div>
+
+          <div class="details">
+            <div class="ghost-scrollbar">
+              <textarea placeholder="What's on your mind?"></textarea>
+              <div class="cover-scrollbar"></div>
+            </div>
+          </div>
+
+          <div class="options">
+            <div class="container">
+
+              <div class="option-container">
+                <div class="option">
+                  <img src="resources/img/newpost/upload_img.svg">
+                  <span class="tooltip-text">Add Photos</span>
+                </div>
+              </div>
+
+              <div class="option-container">
+                <div class="option">
+                  <img src="resources/img/newpost/tag_friends.svg">
+                  <span class="tooltip-text">Tag Friends</span>
+                </div>
+              </div>
+
+              <div class="option-container">
+                <div class="option">
+                  <img src="resources/img/newpost/visibility.svg">
+                  <span class="tooltip-text">Visible To</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
+
+        <!--<div class="all-posts">
+          "ALL POSTS"
+
+          <div class="post">
+            <div>
+
+              <div>
+                "PICTURE"
+              </div>
+
+              <div>
+                <div>
+                  "NAME"
+                </div>
+                <div>
+                  <div>
+                    "HOUR"
+                  </div>
+                  <div>
+                    "PRIVACY"
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div>
+              <div>
+                "TEXT"
+              </div>
+              <div>
+                "PICTURE?"
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <div>
+                  "# LIKES"
+                </div>
+                <div>
+                  <div>
+                    "# COMMENTS"
+                  </div>
+                  <div>
+                    "# SHARES"
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                "DO-LIKE"
+              </div>
+              <div>
+                "DO-COMMENT"
+              </div>
+              <div>
+                "DO-SHARE"
+              </div>
+            </div>
+          </div>
+
+          <div class="post">
+            "POST"
+          </div>
+        </div>-->
 
       </div>
-      "MAIN section"
+
     </div>
+
   </div>
+
 </body>
 
 </html>
