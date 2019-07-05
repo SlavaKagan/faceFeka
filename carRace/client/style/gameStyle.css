@@ -1,0 +1,16 @@
+.race{
+  display:block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+}
+
+h3{
+  text-align: center;
+  font-size: 25px;
+  color: rgb(160, 82, 45);
+}

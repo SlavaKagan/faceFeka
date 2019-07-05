@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "game\\": "server\\src"
+    }
+  },
+  "require": {
+    "cboden/ratchet": "^0.4"
+  },
+
+  "authors": [{
+    "name": "Slava Kagan _ Yossi Saadi"
+  }]
+}
