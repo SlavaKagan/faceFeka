@@ -2,7 +2,7 @@
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
-use Game\Game;
+use game\Game;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
