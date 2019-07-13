@@ -4,7 +4,7 @@
   "description": "",
   "main": "game.js",
   "scripts": {
-    "start": "http-server -o"
+    "start": "http-server -o -p 8000"
   },
   "keywords": [],
   "author": "",

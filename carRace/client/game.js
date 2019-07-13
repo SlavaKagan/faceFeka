@@ -18,6 +18,8 @@ let carPlace = 0;
 let myMoney = 0;
 let otherMoney = 0;
 let matrix = [];
+let smallDigits = [new Image(),new Image(),new Image(),new Image(),new Image(),
+    new Image(),new Image(),new Image(),new Image(),new Image()];
 let baseCar1;
 let baseCar2;
 let car1y;
@@ -42,22 +44,26 @@ function loadGame() {
         car1y = baseCar1;
         car2y = baseCar2;
     };
-    
+
     car1.onload = function () {
         context.drawImage(car1, basePos, car1y);
     };
     car2.onload = function () {
         context.drawImage(car2, basePos, car2y);
     };
+
+    smallDigits.onload = function() {
+        context.drawImage(smallDigits[myMoney], basePos + 20, car1y - 30);
+        context.drawImage(smallDigits[otherMoney], basePos + 20, car2y - 30);
+    };
+
     current_player_arrow.onload = function () {
         context.drawImage(current_player_arrow, basePos + car1.width / 2, car1y - 30);
     };
 
     money.onload = function () {
-        console.log("hi\n");
     };
     cone.onload = function () {
-        console.log("hi\n");
     };
     speedSound = new Audio();
 
@@ -68,6 +74,9 @@ function loadGame() {
     current_player_arrow.src = "images/current_player_arrow.png";
     money.src = "images/money.png";
     cone.src = "images/cone.png";
+    for (let i = 0; i < smallDigits.length; i++) {
+        smallDigits[i].src = "images/"+i+".png";
+    }
     speedSound.src = "sounds/car_speed.wav";
 }
 
@@ -77,17 +86,20 @@ function drawCanvas() {
     context.drawImage(road, basePos, canvas.height * 0.6, canvas.width, road.height * 3);
     context.drawImage(car1, basePos, car1y);
     context.drawImage(car2, basePos, car2y);
+    context.drawImage(smallDigits[myMoney], basePos + 20, car1y - 30);
+    context.drawImage(smallDigits[otherMoney], basePos + 20, car2y - 30);
+
     speedSound.play();
 
     for (let i = 1; i < 6; i++) {
         for (let j = 0; j < 3; j++) {
             if (typeof matrix[i][j] !== "undefined") {
                 if (matrix[i][j] === 'money') {
-                    context.drawImage(money, basePos + i * 170, baseCar1 - 20 * j, money.width * 0.4, money.height * 0.4);
-                    context.drawImage(money, basePos + i * 170, baseCar2 - 20 * j, money.width * 0.4, money.height * 0.4);
+                    context.drawImage(money, basePos + i * 200, canvas.height * 0.1 + j * road.height, money.width * 0.3, money.height * 0.3);
+                    context.drawImage(money, basePos + i * 200, canvas.height * 0.6 + j * road.height, money.width * 0.3, money.height * 0.3);
                 } else {
-                    context.drawImage(cone, basePos + i * 170, baseCar1 - 20 * j, cone.width * 0.1, cone.height * 0.1);
-                    context.drawImage(cone, basePos + i * 170, baseCar2 - 20 * j, cone.width * 0.1, cone.height * 0.1);
+                    context.drawImage(cone, basePos + i * 200, canvas.height * 0.1 + road.height * j, cone.width * 0.05, cone.height * 0.05);
+                    context.drawImage(cone, basePos + i * 200, canvas.height * 0.6 + road.height * j, cone.width * 0.05, cone.height * 0.05);
                 }
             }
         }
@@ -107,10 +119,12 @@ function drawCanvas() {
                     'type': 'ILostYouWon'
                 })
             );
-            alert("You lost! Opponent won with " + myMoney + " points");
+            alert("You lost! Opponent won with " + otherMoney + " points");
+            connection.close();
         }
     }
 }
+
 loadGame();
 drawCanvas();
 
@@ -138,6 +152,7 @@ connection.onmessage = function (e) {
 
         case 'IGetMoney':
             otherMoney++;
+            drawCanvas();
             break;
 
         case "cone":
@@ -150,9 +165,13 @@ connection.onmessage = function (e) {
             drawCanvas();
             break;
         case 'ILostYouWon':
-            alert("Congrats! You won!" + myMoney);
+            alert("You won! Your Score: " + myMoney +" points");
+            connection.close();
             break;
     }
+};
+
+connection.onclose = function () {
 };
 
 document.onkeypress = (event) => {

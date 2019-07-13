@@ -5,7 +5,8 @@
     }
   },
   "require": {
-    "cboden/ratchet": "^0.4"
+    "cboden/ratchet": "^0.4",
+    "ext-json": "*"
   },
 
   "authors": [{

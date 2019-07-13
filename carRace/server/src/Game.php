@@ -28,6 +28,7 @@ class Game implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
+        $this->clients[$conn->resourceId] = $conn;
         echo "New connection! ({$conn->resourceId})\n";
     }
 
@@ -40,6 +41,7 @@ class Game implements MessageComponentInterface
     public function onClose(ConnectionInterface $conn)
     {
         $this->clients->detach($conn);
+        unset($this->clients[$conn->resourceId]);
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
@@ -67,7 +69,7 @@ class Game implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        if(sizeof($this->clients)== 2) {
+        if(sizeof($this->clients)== 3) {
             $numRecv = count($this->clients) - 1;
             echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
                 , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
@@ -77,6 +79,14 @@ class Game implements MessageComponentInterface
                     // The sender is not the receiver, send to each client connected
                     $client->send($msg);
                 }
+            }
+
+            $arr = json_decode($msg, true);
+            $type = $arr['type'];
+
+            if ($type == 'ILostYouWon') {
+                unset($this->clients[1]);
+                unset($this->clients[2]);
             }
         }
     }
