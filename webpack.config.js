@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const general = {
   module: {
@@ -32,13 +33,30 @@ const general = {
     extensions: ['.js', '.jsx']
   },
 
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        test: /\.js($|\?)/i,
+        include: /\/includes/,
+        exclude: /\/excludes/,
+        cache: true,
+        parallel: true,
+        sourceMap: true
+    } )]
+  },
+
+  performance: {
+    hints: false
+  },
+
   devServer: {
     historyApiFallback: true,
     contentBase: './',
     watchOptions: {
       aggregateTimeout: 300,
       poll: 100
-    }
+    },
+    watch: true
   }
 };
 
