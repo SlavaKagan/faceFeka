@@ -1,13 +1,16 @@
 import React from 'react';
+
 import LeftNav from './leftnav/left_nav';
+import SearchFriendsDropdown from './searchdropdown/search_friends_dropdown';
 import RightNav from './rightnav/right_nav';
 
-const NavBar = (props) => {
+const NavBar = ( ) => {
   return(
-    <>
+    <nav>
       <LeftNav />
-      <RightNav navitems = { [ 'Home', 'Profile', 'Friends', 'Notifications' ] }/>
-    </>
+      <SearchFriendsDropdown />
+      <RightNav />
+    </nav>
   );
 };
 

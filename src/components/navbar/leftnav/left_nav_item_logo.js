@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from '../../../../resources/img/navbar/logo/logo.png';
 
-const LeftNavItemLogo = () => {
+import Logo from '../../svgs/nav_bar_svgs';
+
+const LeftNavItemLogo = ( ) => {
   return(
-    <div className="logo">
-      <img src={logo} />
+    <div className = "logo" >
+      <a href = { "" } >
+        <img src = { Logo } alt = "logo" />
+      </a>
     </div>
   );
 };

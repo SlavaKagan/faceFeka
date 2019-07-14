@@ -1,14 +1,12 @@
 import React from 'react';
-// import SvgPicture from '../../../../resources/img/navbar/{name}.svg';
 
-const RightNavItem = ({name}) => {
-  // const {img} = import(`../../../../resources/img/navbar/${name}.svg`);
-  const SvgPicture = import(`../../../../resources/img/navbar/${name}.svg`);
-
+const RightNavItem = ( props ) => {
   return(
     <div>
-      <SvgPicture />
-      <span>{name}</span>
+      <a href = { props.href }>
+        { props.children }
+        <span>{ props.name }</span>
+      </a>
     </div>
   );
 };

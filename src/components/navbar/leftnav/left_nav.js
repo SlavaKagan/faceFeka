@@ -1,10 +1,11 @@
 import React from 'react';
+
 import LeftNavItemLogo from './left_nav_item_logo';
 import LeftNavItemInput from './left_nav_item_input';
 
-const LeftNav = (props) => {
+const LeftNav = ( ) => {
   return(
-    <div className="leftnav">
+    <div className = "leftnav" >
       <LeftNavItemLogo />
       <LeftNavItemInput />
     </div>
