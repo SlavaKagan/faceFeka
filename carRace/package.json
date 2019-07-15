@@ -1,0 +1,17 @@
+{
+  "name": "carrace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "concurrently \"cd ./server && npm install\" \"cd ./client && npm install\"",
+    "client": "cd ./client && npm run start",
+    "server": "cd ./server && npm run start",
+    "start": "concurrently npm:server npm:client"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  }
+}
