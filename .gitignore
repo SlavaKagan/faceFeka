@@ -1,3 +1,4 @@
 /.idea/
 /node_modules/
 bundle/index.bundle.js.map
+bundle/sign.bundle.js.map
