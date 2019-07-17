@@ -62,7 +62,8 @@ const general = {
 
 const config = {
   entry: {
-    index: path.resolve(__dirname, './src/index.js')
+    index: path.resolve(__dirname, './src/index.js'),
+    sign: path.resolve(__dirname, './src/sign.js')
   },
   output: {
     path: path.resolve(__dirname),

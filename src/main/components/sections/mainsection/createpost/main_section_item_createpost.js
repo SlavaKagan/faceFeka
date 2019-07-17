@@ -35,7 +35,7 @@ class MainSectionItemCreatePost extends Component {
 
     this.updateContent = this.updateContent.bind(this);
     this.updateAttachments = this.updateAttachments.bind(this);
-    this.showVisibilityMenuVisible = this.showVisibilityMenuVisible.bind(this);
+    this.toggleVisibilityOfVisibilityMenu = this.toggleVisibilityOfVisibilityMenu.bind(this);
     this.sharePost = this.sharePost.bind(this);
   };
 
@@ -59,7 +59,7 @@ class MainSectionItemCreatePost extends Component {
           <CreatePostOptions
             onClickingAddPhotos = { this.updateAttachments }
             onClickingSharePost = { this.sharePost }
-            onClickingVisibilityMenu = { this.showVisibilityMenuVisible }
+            onClickingVisibilityMenu = { this.toggleVisibilityOfVisibilityMenu }
             isVisibilityMenuOpen = { this.state.isVisibilityMenuOpen } />
         </div>
       </div>
@@ -84,13 +84,8 @@ class MainSectionItemCreatePost extends Component {
     });
   };
 
-  showVisibilityMenuVisible(event) {
-    // TODO a little buggy, try to fix, only temporary fix, need to know when Global or Private been clicked
-    if (event.target.firstChild) {
-      this.setState( { isVisibilityMenuOpen: false } );
-    } else {
-      this.setState( { isVisibilityMenuOpen: true } );
-    }
+  toggleVisibilityOfVisibilityMenu() {
+    this.setState( { isVisibilityMenuOpen: !this.state.isVisibilityMenuOpen } );
   };
 
   sharePost() {

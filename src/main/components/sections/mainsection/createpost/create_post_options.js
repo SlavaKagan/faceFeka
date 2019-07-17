@@ -30,7 +30,7 @@ class CreatePostOptions extends Component {
 
         <CreatePostOptionItem
             onClick = { this.props.onClickingSharePost }
-            additionalClass = "animate" >
+            isAnimate = { true } >
           <NewPostOptionsEnum.SharePost.svg />
           <ToolTip text = { NewPostOptionsEnum.SharePost.tooltip }/>
           <label>{ NewPostOptionsEnum.SharePost.label }</label>

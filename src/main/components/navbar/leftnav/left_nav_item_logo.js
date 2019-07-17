@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Logo from '../../svgs/nav_bar_svgs';
+import { LogoSVG } from '../../svgs/nav_bar_svgs';
 
 const LeftNavItemLogo = ( ) => {
   return(
     <div className = "logo" >
       <a href = { "" } >
-        <img src = { Logo } alt = "logo" />
+        <LogoSVG />
       </a>
     </div>
   );

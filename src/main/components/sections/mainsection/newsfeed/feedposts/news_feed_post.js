@@ -39,6 +39,8 @@ class NewsFeedPost extends Component {
         shares: 0
       }
     };
+
+    this.generatePostStatsItems = this.generatePostStatsItems.bind(this);
   }
 
   render() {
@@ -105,7 +107,9 @@ class NewsFeedPost extends Component {
   generatePostStatsItems() {
     return getItemsArrayFromEnum(PostStatOptionsEnum).map( (stat) => {
       return(
-        <PostStat name = { stat.name } amount = "0" />
+        <PostStat
+          name = { stat.name }
+          amount = { this.state.stats[stat.name.toLowerCase()] } />
       );
     });
   }
@@ -113,7 +117,11 @@ class NewsFeedPost extends Component {
   generatePostOptionsItems() {
     return getItemsArrayFromEnum(PostStatOptionsEnum).map( (option) => {
       return(
-        <PostOption>
+        <PostOption onClick = { () => {
+          const optionName = option.name.toLowerCase();
+          const currentStats = { ...this.state.stats };
+          currentStats[optionName] = currentStats[optionName] + 1;
+          this.setState( { stats: currentStats } ); } } >
           <option.svg />
         </PostOption>
       );

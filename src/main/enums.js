@@ -14,7 +14,7 @@ export const RightNavBarPagesEnum = {
   Profile: {
     name: 'Profile',
     svg: ProfileSVG,
-    href: null
+    href: "sign.html"
   },
   Friends: {
     name: 'Friends',

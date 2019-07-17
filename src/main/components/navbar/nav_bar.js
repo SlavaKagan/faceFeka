@@ -9,7 +9,7 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
-      isSearchFriendsVisible: true
+      isSearchFriendsVisible: false
     };
   };
 

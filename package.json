@@ -25,7 +25,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "npm run build && node app.js",
+    "start": "node app.js",
+    "dev": "npm run build && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --devtool source-map --progress --colors --config webpack.config.js"
   },

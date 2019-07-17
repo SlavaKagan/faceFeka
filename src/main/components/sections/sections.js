@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LeftSection from './leftsection/left_section';
 import MainSection from './mainsection/main_section';
 
