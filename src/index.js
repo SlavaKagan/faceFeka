@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import NavBar from './components/navbar/nav_bar';
-import Sections from './components/sections/sections';
+import NavBar from './main/components/navbar/nav_bar';
+import Sections from './main/components/sections/sections';
 
 class App extends Component {
   constructor( props ) {
@@ -15,8 +15,11 @@ class App extends Component {
         name: {
           first: 'Lorem',
           last: 'Ipsum Dolor',
-        }
-      }
+        },
+        friends: {},
+        posts: []
+      },
+      allUsers: []
     };
     this.changeUserLoggedIn = this.changeUserLoggedIn.bind(this);
   }
@@ -32,7 +35,7 @@ class App extends Component {
   }
 
   changeUserLoggedIn(newLoggedInUser) {
-    this.setState({loggedInUser: newLoggedInUser});
+    this.setState( { loggedInUser: newLoggedInUser } );
   }
 }
 

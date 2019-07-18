@@ -1,0 +1,296 @@
+/* --------------------------- */
+/* BASIC-SETUP */
+/* --------------------------- */
+
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  font-family: "Abel", "Oswald", serif;
+  font-size: 15px;
+
+  background: #f3f5f8;
+}
+
+body {
+  height: 100vh;
+
+  background-image:
+      linear-gradient(to right top, rgba(48, 98, 213, 0.92), rgba(0, 120, 217, 0.92),
+        rgba(0, 137, 208, 0.92), rgba(0, 150, 194, 0.92), rgba(0, 160, 178, 0.92), rgba(0, 165, 169, 0.92),
+        rgba(0, 168, 155, 0.92), rgba(0, 171, 138, 0.92), rgba(0, 172, 124, 0.92), rgba(0, 172, 107, 0.92),
+        rgba(10, 171, 88, 0.92), rgba(38, 170, 66, 0.92)),
+      url('../img/sign/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  overflow: hidden;
+}
+
+/* --------------------------- */
+/* GLOBAL-CONTAINERS */
+/* --------------------------- */
+
+.big-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sections {
+  width: 100%;
+  height: 100%;
+
+  max-width: 1024px;
+  max-height: 600px;
+
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boundaries {
+  width: 100%;
+  height: 100%;
+
+  max-width: 800px;
+  max-height: 400px;
+}
+
+.headline {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.headline svg {
+  height: auto;
+  width: auto;
+
+  margin-right: 7px;
+
+  fill: #fff;
+}
+
+.headline span {
+  font-family: "Oswald";
+  font-size: 55px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.headline svg,
+.headline span {
+  height: 50px;
+
+  filter: drop-shadow(2px 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius : 5px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.content-container .header {
+
+}
+
+.content-container .content {
+  height: 100%;
+  display: flex;
+}
+
+.content-container .content hr {
+  border: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 80%;
+}
+
+.content-container .content .left-content,
+.content-container .content .right-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  /*border-right: 1px solid rgba(0, 0, 0, 0.23);*/
+}
+
+.content-container .content .right-content {
+  width: 100%;
+  margin-left: 50px;
+  opacity: 0.2;
+
+  transition: opacity 0.2s;
+}
+
+.content-container .content .right-content:hover {
+  opacity: 1;
+}
+
+.content-container .content .left-content .content-header,
+.content-container .content .right-content .content-header {
+  width: 80%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 5px;
+}
+
+.content-container .content .left-content span,
+.content-container .content .right-content span {
+  font-size: 25px;
+  color: rgb(94, 94, 94);
+}
+
+.content-container .content .left-content .inputs,
+.content-container .content .right-content .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 100%;
+
+  margin-left: 30px;
+  /*margin-top: 35px;*/
+}
+
+.input-style {
+  position: relative;
+
+  width: 100%;
+  max-width: 230px;
+
+  margin-bottom: 50px;
+}
+
+.inputs-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.short-input {
+  max-width: 100px;
+  margin-right: 30px;
+}
+
+.input-style .input-style-label {
+  display: flex;
+  flex-direction: row;
+
+  position : absolute;
+
+  top: 0;
+  left: 0;
+
+  font-size: 22px !important;
+
+  transform-origin: 50px 0;
+  transition: all 0.3s ease;
+
+  cursor: text;
+}
+
+.input-style img {
+  opacity: 0.5;
+  width: 25px;
+  position: absolute;
+  top: 5px;
+  margin-left: 205px;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.input-style img:hover {
+  opacity: 0.8;
+}
+
+.input-style input {
+  width: 100%;
+  height: 30px;
+
+  font-family: inherit;
+  font-size: 16px;
+  color: #1d3f48;
+
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0;
+
+  background: none;
+
+  transition: all 0.3s ease;
+}
+
+.input-style input:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.input-style input:not(:placeholder-shown) + span {
+  color: #5A667F;
+  transform: translateY(5px) scale(.75);
+}
+
+.input-style input:focus {
+  background: none;
+  outline: none;
+  border-bottom-color: rgba(0, 0, 0, 0.55);
+}
+
+.input-style input:focus + span,
+.input-style input:not(:focus):valid + span {
+  transform: translateY(-15px) scale(.5) translateX(-50px);
+}
+
+.inputs input[type="submit"] {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px hidden rgba(70, 70, 70, 0.2);
+  background-color: rgba(255, 255, 255, 0);
+  width: 80px;
+  margin-left: 70px;
+  padding: 10px;
+  color: rgb(70, 70, 70);
+
+  outline: none;
+
+  transition: all 0.3s;
+
+  cursor: pointer;
+}
+
+.inputs input[type="submit"]:hover {
+  width: 90px;
+  margin-left: 65px;
+  border-right-style: solid;
+  border-left-style: solid;
+
+  transition: all 0.2s;
+}
+
+.inputs input[type="submit"]:focus {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
