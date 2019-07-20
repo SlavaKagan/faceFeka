@@ -1,7 +1,11 @@
 import { WhatsOnYourMindTextAreaPlaceHolder } from './constants';
 
 export const generateHourString = (date) => {
-  return `${date.getHours()}:${date.getMinutes()}`;
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const h = (hours < 10) ? `0${hours}`:`${hours}`;
+  const m = (minutes < 10) ? `0${minutes}`:`${minutes}`;
+  return `${h}:${m}`;
 };
 
 export const generateDateString = (date) => {

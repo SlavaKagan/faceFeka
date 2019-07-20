@@ -4,8 +4,7 @@ import PostStat from './post_stat';
 import PostOption from './post_option';
 
 import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../enums';
-import { getItemsArrayFromEnum } from '../../../../../helperMethods';
-import VisibilityOption from '../../createpost/visibility_option';
+import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../helperMethods';
 
 class NewsFeedPost extends Component {
   constructor( props ) {
@@ -24,8 +23,8 @@ class NewsFeedPost extends Component {
 
       privacy: PrivacyOptionsEnum.Global,
       time: {
-        hour: `${date.getHours()}:${date.getMinutes()}`,
-        date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear().toString().substr(2, 2)}`
+        hour: generateHourString(date),
+        date: generateDateString(date)
       },
 
       body: {

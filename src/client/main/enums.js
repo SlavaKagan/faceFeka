@@ -3,8 +3,6 @@ import { AddPhotosSVG, SharePostSVG, VisibleToSVG } from './components/svgs/crea
 import { EveryoneSVG, OnlyMeSVG } from './components/svgs/visibility_svgs';
 import { LikeSVG, CommentSVG, ShareSVG } from './components/svgs/newsfeed_post_svgs';
 
-import { getItemsArrayFromEnum } from './helperMethods';
-
 export const RightNavBarPagesEnum = {
   Home: {
     name: 'Home',
