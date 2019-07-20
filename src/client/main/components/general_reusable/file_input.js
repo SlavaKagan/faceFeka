@@ -1,12 +1,12 @@
 import React from 'react';
 
-const FileInput = React.forwardRef((props, ref) => {
+const FileInput = React.forwardRef(( { multiple, onChange } , ref) => {
   return(
     <input
       type = "file"
       style = { {display: 'none'} }
-      multiple = { props.multiple }
-      onChange = { props.onChange }
+      multiple = { multiple }
+      onChange = { onChange }
       ref = { ref } />
   );
 });

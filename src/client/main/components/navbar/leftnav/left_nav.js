@@ -6,7 +6,7 @@ import LeftNavItemInput from './left_nav_item_input';
 const LeftNav = ( ) => {
   return(
     <div className = "leftnav" >
-      <LeftNavItemLogo />
+      <LeftNavItemLogo href = "" />
       <LeftNavItemInput />
     </div>
   );

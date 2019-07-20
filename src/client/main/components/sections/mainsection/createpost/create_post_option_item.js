@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Animate } from '../../../../constants';
 
-const CreatePostOptionItem = ( props ) => {
+const CreatePostOptionItem = ( { onClick, isAnimate, children } ) => {
   return(
     <div
       className = "option-container"
-      onClick = { props.onClick } >
-      <div className = { "option" + ( (props.isAnimate) ? (` ${ Animate }`) : ('') ) } >
-        { props.children }
+      onClick = { onClick } >
+      <div className = { "option" + ( (isAnimate) ? (` ${Animate}`) : ('') ) } >
+        { children }
       </div>
     </div>
   );

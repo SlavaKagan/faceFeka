@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SearchResultsList from './search_results_list';
 import { Visible } from '../../../constants';
+import SearchResultsList from './search_results_list';
 
-const SearchFriendsDropdown = ( props ) => {
+const SearchFriendsDropdown = ( { isSearchFriendsVisible } ) => {
   return(
-    <div className = { "search-friends-dropdown" + ( (props.isSearchFriendsVisible) ? (` ${Visible}`) : ('') ) }>
+    <div className = { "search-friends-dropdown" + ( (isSearchFriendsVisible) ? (` ${Visible}`) : ('') ) }>
       <div className = "x-button-container">
         <div className = "x-button">
           <span>X</span>

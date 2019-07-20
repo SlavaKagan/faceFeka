@@ -16,7 +16,7 @@ const RightNav = ( ) => {
 
   return(
     <div className = "rightnav">
-      {navitems}
+      { navitems }
     </div>
   );
 };

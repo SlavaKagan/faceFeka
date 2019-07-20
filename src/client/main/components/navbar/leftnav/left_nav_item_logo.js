@@ -2,10 +2,10 @@ import React from 'react';
 
 import { LogoSVG } from '../../svgs/nav_bar_svgs';
 
-const LeftNavItemLogo = ( ) => {
+const LeftNavItemLogo = ( { href } ) => {
   return(
     <div className = "logo" >
-      <a href = { "" } >
+      <a href = { href } >
         <LogoSVG />
       </a>
     </div>

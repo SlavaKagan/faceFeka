@@ -31,7 +31,9 @@ class LeftNavItemInput extends Component {
   };
 
   onContentChange(event) {
-    this.setState( { content: event.currentTarget.value } );
+    this.setState( {
+      content: event.currentTarget.value
+    });
     // this.searchAndFilter();
   };
 
