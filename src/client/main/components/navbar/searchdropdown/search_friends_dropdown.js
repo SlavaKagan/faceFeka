@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Visible } from '../../../constants';
+import { Visible } from '../../../utils/constants';
 import SearchResultsList from './search_results_list';
 
 const SearchFriendsDropdown = ( { isSearchFriendsVisible } ) => {

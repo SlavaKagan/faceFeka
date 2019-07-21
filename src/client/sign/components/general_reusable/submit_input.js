@@ -1,10 +1,9 @@
 import React from 'react';
-import { ShortInput } from '../../constants';
 
-const SubmitInputButton = ( props ) => {
+const SubmitInputButton = ( ) => {
   return(
     <>
-      <input type = "submit" className = "ghost"/>
+      <input type = "submit" className = "ghost" />
     </>
   );
 };

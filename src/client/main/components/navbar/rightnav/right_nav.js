@@ -2,8 +2,8 @@ import React from 'react';
 
 import RightNavItem from './right_nav_item';
 
-import { RightNavBarPagesEnum } from '../../../enums';
-import { getItemsArrayFromEnum } from '../../../helperMethods';
+import { RightNavBarPagesEnum } from '../../../utils/enums';
+import { getItemsArrayFromEnum } from '../../../utils/helperMethods';
 
 const RightNav = ( ) => {
   const navitems = getItemsArrayFromEnum(RightNavBarPagesEnum).map( (navItem) => {

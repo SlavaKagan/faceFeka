@@ -5,8 +5,8 @@ import SearchFriendsDropdown from './searchdropdown/search_friends_dropdown';
 import RightNav from './rightnav/right_nav';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
 
     this.state = {
       isSearchFriendsVisible: false

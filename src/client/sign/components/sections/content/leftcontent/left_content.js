@@ -1,18 +1,28 @@
 import React from 'react';
+
 import InputWithHoveringLabel from '../../../general_reusable/input_with_hovering_label';
-import { InputTypesEnum } from '../../../../enums';
 import SubmitInputButton from '../../../general_reusable/submit_input';
 
-const LeftContent = ( props ) => {
+import { InputTypesEnum } from '../../../../utils/enums';
+
+const LeftContent = ( { header } ) => {
+  const leftContentInputs = [InputTypesEnum.Email, InputTypesEnum.Password];
+  const inputItems = leftContentInputs.map( (inputItem) => {
+    return(
+      <InputWithHoveringLabel
+        label =  { inputItem.label }
+        type = { inputItem.type } />
+    );
+  });
+
   return(
     <div className = "left-content">
       <div className = "content-header">
-        <span>{ props.header }</span>
+        <span>{ header }</span>
       </div>
 
       <div className = "inputs">
-        <InputWithHoveringLabel label =  { InputTypesEnum.Email.label } type = { InputTypesEnum.Email.type } />
-        <InputWithHoveringLabel label =  { InputTypesEnum.Password.label } type = { InputTypesEnum.Password.type } />
+        { inputItems }
         <SubmitInputButton />
       </div>
     </div>

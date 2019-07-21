@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Selected } from '../../../../constants';
+import { Selected } from '../../../../utils/constants';
 
 const VisibilityOption = ( props ) => {
   return(

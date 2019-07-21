@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import TextAreaWithGhostScrollbar from '../../../general_reusable/text_area_with_ghost_scrollbar.js';
 import CreatePostOptions from './create_post_options';
 
-import { PrivacyOptionsEnum } from '../../../../enums';
+import { PrivacyOptionsEnum } from '../../../../utils/enums';
 
 import {
   generateCreatePostTextAreaPlaceHolder,
   generateDateString,
   generateHourString
-} from '../../../../helperMethods';
+} from '../../../../utils/helperMethods';
 
 class MainSectionItemCreatePost extends Component {
   constructor( props ) {
@@ -50,7 +50,7 @@ class MainSectionItemCreatePost extends Component {
 
         <div className = "text">
           <TextAreaWithGhostScrollbar
-            placeholder = { generateCreatePostTextAreaPlaceHolder(this.state.author.name.first) }
+            placeholder = { generateCreatePostTextAreaPlaceHolder(this.props.loggedInUser.name.first) }
             value = { this.state.body.content }
             onChange = { this.updateContent } />
         </div>

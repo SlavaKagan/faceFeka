@@ -6,11 +6,11 @@ import CreatePostOptionItem from './create_post_option_item';
 import FileInput from '../../../general_reusable/file_input';
 import VisibilityOptionsSelectorMenu from './visibility_options_selector_menu';
 
-import { NewPostOptionsEnum } from '../../../../enums';
+import { NewPostOptionsEnum } from '../../../../utils/enums';
 
 class CreatePostOptions extends Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
 
     this.fileInput = React.createRef();
     this.clickOnFileUpload = this.clickOnFileUpload.bind(this);

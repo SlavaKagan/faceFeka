@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import PostStat from './post_stat';
 import PostOption from './post_option';
 
-import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../enums';
-import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../helperMethods';
+import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../utils/enums';
+import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
 
 class NewsFeedPost extends Component {
   constructor( props ) {

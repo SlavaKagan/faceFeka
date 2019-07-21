@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { SearchSVG } from '../../svgs/nav_bar_svgs';
 
-import { SearchBarPlaceholder } from '../../../constants';
+import { SearchBarPlaceholder } from '../../../utils/constants';
 
 class LeftNavItemInput extends Component {
   constructor( props ) {

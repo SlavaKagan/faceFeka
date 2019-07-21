@@ -4,7 +4,6 @@ const FileInput = React.forwardRef(( { multiple, onChange } , ref) => {
   return(
     <input
       type = "file"
-      style = { {display: 'none'} }
       multiple = { multiple }
       onChange = { onChange }
       ref = { ref } />
