@@ -21,7 +21,7 @@ body {
 }
 
 /* --------------------------- */
-/* INPUT & TEXT-AREA - GLOBAL */
+/* GLOBAL TYPES CSS */
 /* --------------------------- */
 
 a:link,
@@ -38,6 +38,10 @@ input {
 textarea:focus::placeholder,
 input:focus::placeholder {
   color: #d0d0d0;
+}
+
+input[type=file] {
+  display: none;
 }
 
 /* --------------------------- */

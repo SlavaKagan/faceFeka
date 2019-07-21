@@ -1,4 +1,4 @@
-import { Hidden, Visible } from './components/svgs/show_hide_password_svgs';
+import { Hidden, Visible } from '../components/svgs/show_hide_password_svgs';
 
 export const PasswordVisibilityInputOptionsEnum = {
   Hidden: {
