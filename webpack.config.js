@@ -16,15 +16,8 @@ const general = {
       },
 
       {
-        test: /\.(png|jpe?g|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]'
-            },
-          }
-        ]
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -62,8 +55,8 @@ const general = {
 
 const config = {
   entry: {
-    index: path.resolve(__dirname, './src/index.js'),
-    sign: path.resolve(__dirname, './src/sign.js')
+    index: path.resolve(__dirname, './src/client/index.js'),
+    sign: path.resolve(__dirname, './src/client/sign.js')
   },
   output: {
     path: path.resolve(__dirname),
