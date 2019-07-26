@@ -14,6 +14,7 @@ module.exports = {
     Users: 'users',
     Login: 'login',
     Logout: 'logout',
+    VerifyToken: 'verifytoken',
     SelfInfo: 'selfinfo',
     AddFriendship: 'addfriendship'
   },
