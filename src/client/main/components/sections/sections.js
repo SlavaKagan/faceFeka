@@ -8,7 +8,7 @@ const Sections = ( { loggedInUser } ) => {
     <div className = "sections-container">
       <LeftSection
         loggedInUserName = { loggedInUser.name }
-        loggedInUserPic = { loggedInUser.picture } />
+        loggedInUserPic = { loggedInUser.profilepic } />
       <MainSection loggedInUser = { loggedInUser } />
     </div>
   );

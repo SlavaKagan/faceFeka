@@ -3,7 +3,7 @@ import React from 'react';
 import HeadlineSection from './headline/headline_section';
 import ContentSection from './content/content_section';
 
-const Sections = () => {
+const Sections = (  ) => {
   return(
     <div className = "sections">
       <HeadlineSection />

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const SubmitInputButton = ( ) => {
+const SubmitInputButton = (  ) => {
   return(
     <>
-      <input type = "submit" className = "ghost" />
+      <input
+        type = "submit"
+        className = "submit-button" />
     </>
   );
 };

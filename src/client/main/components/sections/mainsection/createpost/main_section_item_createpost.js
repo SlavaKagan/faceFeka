@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Image, CloudinaryContext } from 'cloudinary-react';
 
 import TextAreaWithGhostScrollbar from '../../../general_reusable/text_area_with_ghost_scrollbar.js';
 import CreatePostOptions from './create_post_options';
@@ -76,6 +77,9 @@ class MainSectionItemCreatePost extends Component {
   };
 
   updateAttachments(event) {
+    {/*<CloudinaryContext cloudName = "facefeka">*/}
+    {/*  <Image />*/}
+    {/*</CloudinaryContext>*/}
     this.setState( {
       body: {
         ...this.state.body,

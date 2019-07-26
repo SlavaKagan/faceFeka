@@ -3,11 +3,12 @@ import React from 'react';
 import { Selected } from '../../../../utils/constants';
 
 const VisibilityOption = ( props ) => {
+  const { isSelected, onClickGetSelected, name } = props;
   return(
     <div
-      className = { "visibility-option" + ( (props.isSelected) ? (` ${Selected}`) : ('') ) }
-      onClick = { props.onClickGetSelected } >
-      <span>{ props.name }</span>
+      className = { "visibility-option" + ( (isSelected) ? (` ${Selected}`) : ('') ) }
+      onClick = { onClickGetSelected } >
+      <span>{ name }</span>
       <props.svg />
     </div>
   );

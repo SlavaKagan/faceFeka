@@ -17,6 +17,7 @@ class CreatePostOptions extends Component {
   };
 
   render() {
+    const { onClickingAddPhotos, onClickingSharePost, onClickingVisibilityMenu, isVisibilityMenuOpen } = this.props;
     return (
       <div className="container">
         <CreatePostOptionItem onClick = { this.clickOnFileUpload } >
@@ -24,22 +25,22 @@ class CreatePostOptions extends Component {
           <ToolTip text = { NewPostOptionsEnum.AddPhotos.tooltip } />
           <FileInput
             multiple = "multiple"
-            onChange = { this.props.onClickingAddPhotos }
+            onChange = { onClickingAddPhotos }
             ref = { this.fileInput } />
         </CreatePostOptionItem>
 
         <CreatePostOptionItem
-            onClick = { this.props.onClickingSharePost }
+            onClick = { onClickingSharePost }
             isAnimate = { true } >
           <NewPostOptionsEnum.SharePost.svg />
           <ToolTip text = { NewPostOptionsEnum.SharePost.tooltip }/>
           <label>{ NewPostOptionsEnum.SharePost.label }</label>
         </CreatePostOptionItem>
 
-        <CreatePostOptionItem onClick = { this.props.onClickingVisibilityMenu } >
+        <CreatePostOptionItem onClick = { onClickingVisibilityMenu } >
           <NewPostOptionsEnum.VisibleTo.svg />
           <ToolTip text = { NewPostOptionsEnum.VisibleTo.tooltip } />
-          <VisibilityOptionsSelectorMenu isVisibilityMenuOpen = { this.props.isVisibilityMenuOpen } />
+          <VisibilityOptionsSelectorMenu isVisibilityMenuOpen = { isVisibilityMenuOpen } />
         </CreatePostOptionItem>
       </div>
     );

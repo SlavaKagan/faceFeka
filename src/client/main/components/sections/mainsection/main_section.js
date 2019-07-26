@@ -7,7 +7,7 @@ const MainSection = ( { loggedInUser } ) => {
   return(
     <div className = "section main-section">
       <MainSectionItemCreatePost loggedInUser = { loggedInUser } />
-      <MainSectionItemNewsFeed />
+      <MainSectionItemNewsFeed loggedInUser = { loggedInUser } />
     </div>
   );
 };
