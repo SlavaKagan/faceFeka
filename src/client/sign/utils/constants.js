@@ -5,3 +5,6 @@ export const SignUpHeader = "Still don't have an account?";
 
 /** CLASSES **/
 export const ShortInput = "short-input";
+
+/** GENERAL **/
+export const TokenStorageKey = 'facefeka';

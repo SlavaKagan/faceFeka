@@ -6,7 +6,9 @@ import SubmitInputButton from '../../../general_reusable/submit_input';
 import LoadingSpinner from '../../../../../main/components/general_reusable/loading_spinner';
 
 import { InputTypesEnum } from '../../../../utils/enums';
+import { setInStorage, getFromStorage } from '../../../../utils/storageMethods';
 import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
+import { TokenStorageKey } from '../../../../utils/constants';
 
 class LeftContent extends Component {
   constructor(props) {
@@ -34,12 +36,9 @@ class LeftContent extends Component {
   }
 
   loginUser() {
-    const user = {
-      ...this.state.formdata
-    };
-
     axios.post(`${UserPaths.Users}/${UserPaths.Login}`, this.state.formdata).then((result) => {
       console.log(result);
+      setInStorage(TokenStorageKey, { token: result.data.token });
     }).catch((error) => {
       if (!error.response) {
         console.log(error);

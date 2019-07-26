@@ -8,6 +8,8 @@ import FileInput from '../../../../../main/components/general_reusable/file_inpu
 
 import { CloudinaryFieldsEnum, InputTypesEnum } from '../../../../utils/enums';
 import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
+import { setInStorage } from '../../../../utils/storageMethods';
+import { TokenStorageKey } from '../../../../utils/constants';
 
 class RightContent extends Component {
   constructor(props) {
@@ -53,6 +55,23 @@ class RightContent extends Component {
     }
   }
 
+  createUser() {
+    const newUser = {
+      ...this.state.formdata,
+      profilepic: this.state.profilepic
+    };
+
+    this.setState( { loading: true } );
+
+    axios.post(UserPaths.Users, newUser).then((result) => {
+      console.log(result);
+      this.setState( { loading: false } );
+      setInStorage(TokenStorageKey, { token: result.data.token });
+    }).catch((error) => {
+      console.log(error.response);
+    });
+  }
+
   uploadImage(event) {
     const files = event.target.files;
     const body = new FormData();
@@ -68,22 +87,6 @@ class RightContent extends Component {
       this.setState( { loading: false } );
     }).catch((error) => {
       console.log(error);
-    });
-  }
-
-  createUser() {
-    const newUser = {
-      ...this.state.formdata,
-      profilepic: this.state.profilepic
-    };
-
-    this.setState( { loading: true } );
-
-    axios.post(UserPaths.Users, newUser).then((result) => {
-      console.log(result);
-      this.setState( { loading: false } );
-    }).catch((error) => {
-      console.log(error.response);
     });
   }
 

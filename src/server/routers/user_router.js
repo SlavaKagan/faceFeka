@@ -4,7 +4,7 @@ const router = new Router;
 const User = require(`../models/user_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 
-const { Users, Login, Logout, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
+const { Users, Login, Logout, VerifyToken, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
 
 /** CREATE A NEW USER **/
 router.post(`/${Users}`, async (req, res) => {
@@ -50,6 +50,22 @@ router.post(`/${Users}/${Logout}`, authenticateUser, async (req, res) => {
   }
 });
 
+router.get(`/${VerifyToken}/:token`, async (req, res) => {
+  try {
+    const token = req.params.token;
+
+    const user = await User.findOne( { token } );
+
+    if (!user) {
+      return res.status(401).send();
+    }
+
+    res.send(user);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 /** GET ALL USER's INFO OF THE SPECIFIC LOGGED IN AUTHENTICATED USER **/
 router.get(`/${Users}/${SelfInfo}`, authenticateUser, async (req, res) => {
   res.send(req.userFromAuth);
@@ -71,7 +87,6 @@ router.patch(`/${Users}/${AddFriendship}/:id`, authenticateUser, async (req,res)
   } catch (e) {
     return res.status(500).send();
   }
-
 });
 
 module.exports = router;

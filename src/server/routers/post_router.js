@@ -44,11 +44,11 @@ router.get(`/${Posts}/${SelfPosts}`, authenticateUser, async (req, res) => {
     sort: null*/
   };
 
-  /*if (req.query.sortBy) {
+  if (req.query.sortBy) {
     const request = req.query.sortBy.split(':');
     const by = request[0];
     options.sort[by] = request[1].toLowerCase() === 'desc' ? -1 : 1;
-  }*/
+  }
 
   try {
     await req.userFromAuth.populate({
@@ -60,14 +60,6 @@ router.get(`/${Posts}/${SelfPosts}`, authenticateUser, async (req, res) => {
   } catch (e) {
     res.status(500).send(e);
   }
-
-
-  // try {
-  //   await req.userFromAuth.populate('posts').execPopulate();
-  //   res.send(req.userFromAuth.posts);
-  // } catch (e) {
-  //   res.status(400).send(e);
-  // }
 });
 
 /** GET ALL FRIENDS POSTS OF THE SPECIFIC LOGGED IN AUTHENTICATED USER **/
@@ -84,8 +76,6 @@ router.get(`/${Posts}/${FriendsPosts}`, authenticateUser, async (req, res) => {
         await user.populate(Posts).execPopulate();
         const globalPostsArr = user.posts.filter((post) => post.privacy !== PrivacyOptionsEnum.Private);
         // TEST THE FILTER - STILL NOT CHECKED !
-        console.log("USER POSTS ", user.posts);
-        console.log("USER GLOBAL POSTS ", user.posts);
         allFriendsPosts = allFriendsPosts.concat(user.posts);
       }
     }
@@ -95,22 +85,5 @@ router.get(`/${Posts}/${FriendsPosts}`, authenticateUser, async (req, res) => {
     res.status(500).send(e);
   }
 });
-
-// /** GET A SPECIFIC POST BY IT'S UNIQUE ID, REQUIRING THE AUTHOR TO BE THE LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
-// router.get(`/${Posts}/${Id}`, authenticateUser, async (req, res) => {
-//   try {
-//     const _id = req.params.id;
-//     const author = req.userFromAuth._id;
-//     const task = await Post.findOne( { _id, author } );
-//
-//     if (!task) {
-//       return res.status(404).send();
-//     }
-//
-//     res.send(task);
-//   } catch (e) {
-//     res.status(500).send(e);
-//   }
-// });
 
 module.exports = router;
