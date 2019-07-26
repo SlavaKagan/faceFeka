@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { secret } = require('../utils/constants');
+const { Secret } = require('../utils/constants');
 const { APICollectionsModelsEnum } = require('../utils/enums');
 const { Users, Posts } = APICollectionsModelsEnum;
 const userModelName = Users.modelName;
@@ -58,7 +58,7 @@ UserSchema.virtual(postCollectionNameDB, {
 
 UserSchema.methods.generateAuthToken = async function() {
   const _id = this._id.toString();
-  const token = jwt.sign({ _id }, secret);
+  const token = jwt.sign({ _id }, Secret);
 
   this.token = token;
   await this.save();

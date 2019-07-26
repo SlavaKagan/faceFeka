@@ -471,6 +471,7 @@ nav .rightnav div a span {
 }
 
 .profile-name {
+  text-transform : capitalize;
   font-size: 15px;
   text-align: center;
   margin-top: 10px;

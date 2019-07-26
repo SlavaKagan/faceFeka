@@ -4,7 +4,6 @@ require(`./db/mongoose`);
 
 const userRouter = require(`./routers/user_router`);
 const postRouter = require(`./routers/post_router`);
-// const authenticateUser = require('./middleware/authenticate_user');
 
 const app = express();
 const port = process.env.port || 5000;
@@ -16,9 +15,6 @@ app.use(express.json());
 
 app.use(userRouter);
 app.use(postRouter);
-// app.get('/checktoken', authenticateUser, (req, res) => {
-//   res.send();
-// });
 
 app.get('*', (req, res) => {
   res.status(404).send({
