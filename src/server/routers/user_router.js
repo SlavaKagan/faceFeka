@@ -4,11 +4,10 @@ const router = new Router;
 const User = require(`../models/user_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 
-const { APIUserPathsEndpointsEnum } = require('../utils/enums');
-const Paths = APIUserPathsEndpointsEnum;
+const { Users, Login, Logout, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
 
 /** CREATE A NEW USER **/
-router.post(`/${Paths.Users}`, async (req, res) => {
+router.post(`/${Users}`, async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
@@ -20,7 +19,7 @@ router.post(`/${Paths.Users}`, async (req, res) => {
 });
 
 /** GET ALL USERS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS - IT'S NOT SECURED ! **/
-router.get(`/${Paths.Users}`, authenticateUser, async (req, res) => {
+router.get(`/${Users}`, /*authenticateUser,*/ async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
@@ -30,7 +29,7 @@ router.get(`/${Paths.Users}`, authenticateUser, async (req, res) => {
 });
 
 /** LOGIN A USER **/
-router.post(`/${Paths.Users}/${Paths.Login}`, async (req, res) => {
+router.post(`/${Users}/${Login}`, async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
     await user.generateAuthToken();
@@ -41,7 +40,7 @@ router.post(`/${Paths.Users}/${Paths.Login}`, async (req, res) => {
 });
 
 /** LOGOUT A CONNECTED USER, REQUIRING TO BE THE CONNECTED AUTHENTICATED USER TO DO SO **/
-router.post(`/${Paths.Users}/${Paths.Logout}`, authenticateUser, async (req, res) => {
+router.post(`/${Users}/${Logout}`, authenticateUser, async (req, res) => {
   try {
     req.userFromAuth.token = null;
     await req.userFromAuth.save();
@@ -52,8 +51,27 @@ router.post(`/${Paths.Users}/${Paths.Logout}`, authenticateUser, async (req, res
 });
 
 /** GET ALL USER's INFO OF THE SPECIFIC LOGGED IN AUTHENTICATED USER **/
-router.get(`/${Paths.Users}/${Paths.SelfInfo}`, authenticateUser, async (req, res) => {
+router.get(`/${Users}/${SelfInfo}`, authenticateUser, async (req, res) => {
   res.send(req.userFromAuth);
+});
+
+router.patch(`/${Users}/${AddFriendship}/:id`, authenticateUser, async (req,res) => {
+  try {
+    const user1AfterFriendship = await User.findByIdAndUpdate(req.userFromAuth._id, {$addToSet: { friends: req.params.id }}, {new: true});
+    if (!user1AfterFriendship) {
+      return res.status(404).send();
+    }
+
+    const user2AfterFriendship = await User.findByIdAndUpdate(req.params.id, {$addToSet: { friends: req.userFromAuth._id }}, {new: true});
+    if (!user2AfterFriendship) {
+      return res.status(500).send();
+    }
+
+    res.send({ user1AfterFriendship, user2AfterFriendship });
+  } catch (e) {
+    return res.status(500).send();
+  }
+
 });
 
 module.exports = router;

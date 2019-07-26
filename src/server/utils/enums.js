@@ -12,16 +12,16 @@ module.exports = {
 
   APIUserPathsEndpointsEnum: {
     Users: 'users',
-    Id: ':id',
     Login: 'login',
     Logout: 'logout',
-    SelfInfo: 'selfinfo'
+    SelfInfo: 'selfinfo',
+    AddFriendship: 'addfriendship'
   },
 
   APIPostPathsEndpointsEnum: {
     Posts: 'posts',
-    Id: ':id',
-    SelfPosts: 'selfposts'
+    SelfPosts: 'selfposts',
+    FriendsPosts: 'friendsposts'
   },
 
   PrivacyOptionsEnum: {

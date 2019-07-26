@@ -1,4 +1,4 @@
-import { HomeSVG, ProfileSVG, FriendsSVG, NotificationsSVG, Logout } from '../components/svgs/nav_bar_svgs';
+import { HomeSVG, ProfileSVG, FriendsSVG, Logout } from '../components/svgs/nav_bar_svgs';
 import { AddPhotosSVG, SharePostSVG, VisibleToSVG } from '../components/svgs/create_post_svgs';
 import { EveryoneSVG, OnlyMeSVG } from '../components/svgs/visibility_svgs';
 import { LikeSVG, CommentSVG, ShareSVG } from '../components/svgs/newsfeed_post_svgs';
