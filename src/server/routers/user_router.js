@@ -4,7 +4,7 @@ const router = new Router;
 const User = require(`../models/user_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 
-const { Users, Login, Logout, VerifyToken, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
+const { Users, NonFriends, Login, Logout, VerifyToken, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
 
 /** CREATE A NEW USER **/
 router.post(`/${Users}`, async (req, res) => {
@@ -18,11 +18,24 @@ router.post(`/${Users}`, async (req, res) => {
   }
 });
 
-/** GET ALL USERS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS - IT'S NOT SECURED ! **/
-router.get(`/${Users}`, /*authenticateUser,*/ async (req, res) => {
+/** GET ALL USERS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
+router.get(`/${Users}`, authenticateUser, async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+/** GET ALL USER's NON FRIENDS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
+router.get(`/${Users}/${NonFriends}`, authenticateUser, async (req, res) => {
+  try {
+    const users = await User.find({});
+    const afterFilter = users.filter(user =>
+      !req.userFromAuth.friends.includes(user._id) &&
+      user.id != req.userFromAuth._id);
+    res.send(afterFilter);
   } catch (e) {
     res.status(400).send(e);
   }
@@ -51,6 +64,7 @@ router.post(`/${Users}/${Logout}`, authenticateUser, async (req, res) => {
   }
 });
 
+/** VERIFY TOKEN OF REQUESTER USER **/
 router.get(`/${VerifyToken}`, authenticateUser, async (req, res) => {
   try {
     res.send(req.userFromAuth);
@@ -67,7 +81,11 @@ router.get(`/${Users}/${SelfInfo}`, authenticateUser, async (req, res) => {
 router.patch(`/${Users}/${AddFriendship}/:id`, authenticateUser, async (req,res) => {
   try {
     if (req.userFromAuth._id.toString() === req.params.id) {
-      return res.status(400).send({ error: "Can't add yourself to your friends" });
+      return res.status(400).send({ error: "Can't add yourself to your friends!" });
+    }
+
+    if (req.userFromAuth.friends.includes(req.params.id)) {
+      return res.status(400).send({ error: "This user is already your friend!" });
     }
 
     const user1AfterFriendship = await User.findByIdAndUpdate(req.userFromAuth._id, {$addToSet: { friends: req.params.id }}, {new: true});

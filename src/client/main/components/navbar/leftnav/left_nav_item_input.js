@@ -13,7 +13,6 @@ class LeftNavItemInput extends Component {
     };
 
     this.onContentChange = this.onContentChange.bind(this);
-    // this.searchAndFilter = this.searchAndFilter.bind(this);
   }
 
   render() {
@@ -24,7 +23,8 @@ class LeftNavItemInput extends Component {
           <input
             type = "text"
             placeholder = { SearchBarPlaceholder }
-            onChange = { this.onContentChange } />
+            onChange = { this.onContentChange }
+            onClick = { this.props.OnClickingSearchBar } />
         </div>
       </div>
     );

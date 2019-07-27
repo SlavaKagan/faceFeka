@@ -6,9 +6,7 @@ import MainSection from './mainsection/main_section';
 const Sections = ( { loggedInUser } ) => {
   return(
     <div className = "sections-container">
-      <LeftSection
-        loggedInUserName = { loggedInUser.name }
-        loggedInUserPic = { loggedInUser.profilepic } />
+      <LeftSection loggedInUser = { loggedInUser }/>
       <MainSection loggedInUser = { loggedInUser } />
     </div>
   );

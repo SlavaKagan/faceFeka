@@ -4,7 +4,7 @@ import PostStat from './post_stat';
 import PostOption from './post_option';
 
 import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../utils/enums';
-import { getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
+import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
 
 class NewsFeedPost extends Component {
   constructor( props ) {
@@ -14,7 +14,8 @@ class NewsFeedPost extends Component {
       profilepic: this.props.user.profilepic,
       fullname: this.props.user.name.first + ' ' + this.props.user.name.last,
       privacy: this.props.post.privacy,
-      createdAt: this.props.post.createdAt,
+      hour: generateHourString(this.props.post.createdAt),
+      date: generateDateString(this.props.post.createdAt),
       content: this.props.post.content,
       attachments: this.props.post.attachments,
       stats: {
@@ -29,11 +30,9 @@ class NewsFeedPost extends Component {
 
   getPrivacySvg() {
     if (this.state.privacy === PrivacyOptionsEnum.Global.name) {
-      // return <PrivacyOptionsEnum.Global.svg />
-      return <img src = "../../../../../../../../resources/img/newsfeedpost/privacy-icons/everyone.svg" />
+      return <PrivacyOptionsEnum.Global.svg />
     }
-    // return <PrivacyOptionsEnum.Private.svg />
-    return <img src = "../../../../../../../../resources/img/newsfeedpost/privacy-icons/onlyme.svg" />
+    return <PrivacyOptionsEnum.Private.svg />
   }
 
   render() {
@@ -59,8 +58,8 @@ class NewsFeedPost extends Component {
                 </div>
 
                 <div className = "date-and-hour">
-                  <div className = "hour">{ this.state.createdAt }</div>
-                  <div className = "date">{ this.state.createdAt }</div>
+                  <div className = "hour">{ this.state.hour }</div>
+                  <div className = "date">{ this.state.date }</div>
                 </div>
               </div>
             </div>
@@ -93,9 +92,29 @@ class NewsFeedPost extends Component {
   };
 
   generatePostAttachmentsItems() {
+
+    const maxSize = 498;
+    const amount = this.state.attachments.length;
+    const maxImagesPerLine = 3;
+    let currentIndex = 0;
+    let width = 0;
+
     return this.state.attachments.map( (attachment) => {
+      if (amount > 3) {
+        width = currentIndex < (amount - maxImagesPerLine) ?
+          maxSize / (amount - maxImagesPerLine) : maxSize / maxImagesPerLine
+      } else {
+        width = maxSize / amount;
+      }
+      currentIndex++;
+
       return(
-        <img src = { attachment } alt = "attachment" />
+        <a href={attachment} target = "_blank">
+          <img
+            src = { attachment }
+            alt = "attachment"
+            width = { width } />
+        </a>
       );
     });
   }
