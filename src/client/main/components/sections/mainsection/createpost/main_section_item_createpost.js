@@ -1,111 +1,124 @@
 import React, { Component } from 'react';
-// import { Image, CloudinaryContext } from 'cloudinary-react';
+import axios from 'axios';
 
 import TextAreaWithGhostScrollbar from '../../../general_reusable/text_area_with_ghost_scrollbar.js';
 import CreatePostOptions from './create_post_options';
+import LoadingSpinner from '../../../general_reusable/loading_spinner';
 
+import { generateCreatePostTextAreaPlaceHolder, uploadImageToCloudinary } from '../../../../utils/helperMethods';
+import { CreatePost } from '../../../../utils/constants';
+import { APIPostPathsEndpointsEnum as PostPaths, } from '../../../../../../server/utils/enums';
 import { PrivacyOptionsEnum } from '../../../../utils/enums';
-
-import {
-  generateCreatePostTextAreaPlaceHolder,
-  generateDateString,
-  generateHourString
-} from '../../../../utils/helperMethods';
+import { getFromStorage } from '../../../../../sign/utils/storageMethods';
+import { TokenStorageKey } from '../../../../../sign/utils/constants';
 
 class MainSectionItemCreatePost extends Component {
   constructor( props ) {
     super( props );
 
     this.state = {
-      author: props.loggedInUser,
-
-      privacy: PrivacyOptionsEnum.Global,
-
-      time: {
-        hour: null,
-        date: null
-      },
-
-      body: {
-        content: null,
-        attachments: []
-      },
-
+      content: '',
+      attachments: [],
+      isLoading: false,
+      privacy: PrivacyOptionsEnum.Global.name,
       isVisibilityMenuOpen: false
     };
 
     this.updateContent = this.updateContent.bind(this);
-    this.updateAttachments = this.updateAttachments.bind(this);
-    this.toggleVisibilityOfVisibilityMenu = this.toggleVisibilityOfVisibilityMenu.bind(this);
+    this.toggleVisibilityMenuAndChoosePrivacy = this.toggleVisibilityMenuAndChoosePrivacy.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
+    this.zeroizePostState = this.zeroizePostState.bind(this);
     this.sharePost = this.sharePost.bind(this);
   };
 
   render() {
+    const loadingCircleColorBlue = "rgba(28,114,169,0.92)";
+    const isLoadingOrPostOptions = this.state.isLoading ?
+      <LoadingSpinner circleColor = { loadingCircleColorBlue } /> :
+      <CreatePostOptions
+        onClickingAddPhotos = { this.uploadImage }
+        onClickingSharePost = { this.sharePost }
+        onClickingVisibilityMenu = { this.toggleVisibilityMenuAndChoosePrivacy }
+        isVisibilityMenuOpen = { this.state.isVisibilityMenuOpen } />;
+
     return (
       <div className = "create-post">
         <div className = "head">
           <div className = "title">
-            <span>Create Post</span>
+            <span>{ CreatePost }</span>
           </div>
         </div>
 
         <div className = "text">
           <TextAreaWithGhostScrollbar
             placeholder = { generateCreatePostTextAreaPlaceHolder(this.props.loggedInUser.name.first) }
-            value = { this.state.body.content }
+            value = { this.state.content }
             onChange = { this.updateContent } />
         </div>
 
         <div className = "options">
-          <CreatePostOptions
-            onClickingAddPhotos = { this.updateAttachments }
-            onClickingSharePost = { this.sharePost }
-            onClickingVisibilityMenu = { this.toggleVisibilityOfVisibilityMenu }
-            isVisibilityMenuOpen = { this.state.isVisibilityMenuOpen } />
+          { isLoadingOrPostOptions }
         </div>
       </div>
     );
   };
 
   updateContent(event) {
-    this.setState( {
-      body: {
-        ...this.state.body,
-        content: event.target.value
-      }
-    });
+    this.setState( { content: event.target.value });
   };
 
-  updateAttachments(event) {
-    {/*<CloudinaryContext cloudName = "facefeka">*/}
-    {/*  <Image />*/}
-    {/*</CloudinaryContext>*/}
-    this.setState( {
-      body: {
-        ...this.state.body,
-        attachments: event.target.files
-      }
-    });
-  };
+  uploadImage(event) {
+    const files = event.target.files;
+    const uploadArr = [];
 
-  toggleVisibilityOfVisibilityMenu() {
+    for (const file of files) {
+      this.setState( { isLoading: true } );
+      uploadImageToCloudinary(file).then((result) => {
+        console.log(result);
+        uploadArr.push(result.data.url);
+        this.setState( { isLoading: false } );
+        this.setState( { attachments: uploadArr } );
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+  }
+
+  toggleVisibilityMenuAndChoosePrivacy(event) {
+    if (this.state.isVisibilityMenuOpen) {
+      const element = event.target;
+      this.setState( { privacy: element.innerText } );
+    }
     this.setState( { isVisibilityMenuOpen: !this.state.isVisibilityMenuOpen } );
   };
 
-  sharePost() {
-    const date = new Date();
+  zeroizePostState() {
+    this.setState({content: '', attachments: [], privacy: PrivacyOptionsEnum.Global.name});
+  }
 
-    this.setState( {
-      time: {
-        hour: generateHourString(date),
-        date: generateDateString(date)
-      },
+  sharePost() {
+    const newPost = {
+      content: this.state.content,
+      attachments: this.state.attachments,
+      privacy: this.state.privacy,
       stats: {
         likes: 0,
         comments: 0,
         shares: 0
       }
-    } );
+    };
+
+    console.log(newPost);
+
+    const { token } = getFromStorage(TokenStorageKey);
+
+    axios.post(PostPaths.Posts, newPost, { headers: { "Authorization": `Bearer ${token}` } })
+      .then((result) => {
+        console.log(result);
+        this.zeroizePostState();
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 }
 

@@ -7,6 +7,10 @@ module.exports = {
     Posts: {
       modelName: 'Post',
       collectionNameDB: 'posts'
+    },
+    Comments: {
+      modelName: 'Comment',
+      collectionNameDB: 'comments'
     }
   },
 
@@ -23,6 +27,11 @@ module.exports = {
     Posts: 'posts',
     SelfPosts: 'selfposts',
     FriendsPosts: 'friendsposts'
+  },
+
+  APICommentPathsEndpointsEnum: {
+    Comments: 'comments',
+    PostSelfComments: 'postselfcomments'
   },
 
   PrivacyOptionsEnum: {

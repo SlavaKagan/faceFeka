@@ -35,6 +35,7 @@ router.post(`/${Users}/${Login}`, async (req, res) => {
     await user.generateAuthToken();
     res.send(user);
   } catch (e) {
+    console.log(e);
     res.status(400).send();
   }
 });
@@ -50,17 +51,9 @@ router.post(`/${Users}/${Logout}`, authenticateUser, async (req, res) => {
   }
 });
 
-router.get(`/${VerifyToken}/:token`, async (req, res) => {
+router.get(`/${VerifyToken}`, authenticateUser, async (req, res) => {
   try {
-    const token = req.params.token;
-
-    const user = await User.findOne( { token } );
-
-    if (!user) {
-      return res.status(401).send();
-    }
-
-    res.send(user);
+    res.send(req.userFromAuth);
   } catch (e) {
     console.log(e);
   }
@@ -73,6 +66,10 @@ router.get(`/${Users}/${SelfInfo}`, authenticateUser, async (req, res) => {
 
 router.patch(`/${Users}/${AddFriendship}/:id`, authenticateUser, async (req,res) => {
   try {
+    if (req.userFromAuth._id.toString() === req.params.id) {
+      return res.status(400).send({ error: "Can't add yourself to your friends" });
+    }
+
     const user1AfterFriendship = await User.findByIdAndUpdate(req.userFromAuth._id, {$addToSet: { friends: req.params.id }}, {new: true});
     if (!user1AfterFriendship) {
       return res.status(404).send();

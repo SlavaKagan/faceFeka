@@ -36,27 +36,9 @@ router.get(`/${Posts}`, /*authenticateUser,*/ async (req, res) => {
 
 /** GET ALL POSTS OF THE SPECIFIC LOGGED IN AUTHENTICATED USER **/
 router.get(`/${Posts}/${SelfPosts}`, authenticateUser, async (req, res) => {
-  const path = Posts;
-  const match = {};
-  const options = {
-    limit: parseInt(req.query.limit),
-    skip: parseInt(req.query.skip)/*,
-    sort: null*/
-  };
-
-  if (req.query.sortBy) {
-    const request = req.query.sortBy.split(':');
-    const by = request[0];
-    options.sort[by] = request[1].toLowerCase() === 'desc' ? -1 : 1;
-  }
-
   try {
-    await req.userFromAuth.populate({
-      path,
-      match,
-      options
-    }).execPopulate();
-    res.send(req.userFromAuth.posts);
+    await req.userFromAuth.populate(Posts).execPopulate();
+    res.send({user: req.userFromAuth, posts: req.userFromAuth.posts});
   } catch (e) {
     res.status(500).send(e);
   }
@@ -69,14 +51,17 @@ router.get(`/${Posts}/${FriendsPosts}`, authenticateUser, async (req, res) => {
     let allFriendsPosts = [];
 
     await req.userFromAuth.populate(Posts).execPopulate();
-    allFriendsPosts = allFriendsPosts.concat(req.userFromAuth.posts);
+    if (req.userFromAuth.posts.length > 0) {
+      allFriendsPosts = [ { user: req.userFromAuth, posts: req.userFromAuth.posts } ];
+    }
 
     for (const user of allUsers) {
       if (user.friends.includes(req.userFromAuth._id)) {
         await user.populate(Posts).execPopulate();
-        const globalPostsArr = user.posts.filter((post) => post.privacy !== PrivacyOptionsEnum.Private);
-        // TEST THE FILTER - STILL NOT CHECKED !
-        allFriendsPosts = allFriendsPosts.concat(user.posts);
+        const posts = user.posts.filter((post) => post.privacy !== PrivacyOptionsEnum.Private);
+        if (posts.length > 0) {
+          allFriendsPosts = allFriendsPosts.concat( { user, posts } );
+        }
       }
     }
 

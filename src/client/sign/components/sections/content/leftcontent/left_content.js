@@ -3,10 +3,9 @@ import axios from 'axios';
 
 import InputWithHoveringLabel from '../../../general_reusable/input_with_hovering_label';
 import SubmitInputButton from '../../../general_reusable/submit_input';
-import LoadingSpinner from '../../../../../main/components/general_reusable/loading_spinner';
 
 import { InputTypesEnum } from '../../../../utils/enums';
-import { setInStorage, getFromStorage } from '../../../../utils/storageMethods';
+import { setInStorage } from '../../../../utils/storageMethods';
 import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
 import { TokenStorageKey } from '../../../../utils/constants';
 
@@ -15,7 +14,7 @@ class LeftContent extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      isLoggedIn: false,
       formdata: null
     };
 
@@ -36,25 +35,28 @@ class LeftContent extends Component {
   }
 
   loginUser() {
-    axios.post(`${UserPaths.Users}/${UserPaths.Login}`, this.state.formdata).then((result) => {
-      console.log(result);
-      setInStorage(TokenStorageKey, { token: result.data.token });
-    }).catch((error) => {
-      if (!error.response) {
-        console.log(error);
-      } else {
-        console.log(error.response);
-      }
-    });
+    axios.post(`${UserPaths.Users}/${UserPaths.Login}`, this.state.formdata)
+      .then((result) => {
+        console.log(result);
+        setInStorage(TokenStorageKey, { token: result.data.token });
+        this.setState( { isLoggedIn: true } );
+        window.location = '/';
+      }).catch((error) => {
+        if (!error.response) {
+          console.log(error);
+        } else {
+          console.log(error.response);
+        }
+      });
   }
 
   render() {
     const { header } = this.props;
     const loadingCircleColorBlue = "rgba(0, 165, 169, 0.92)";
 
-    const isLoadingOrSubmitButton = this.state.loading ?
-      <LoadingSpinner circleColor = { loadingCircleColorBlue } /> :
-      <SubmitInputButton />;
+    // if (this.state.isLoggedIn) {
+    //   return <Redirect to = "dsa" />
+    // }
 
     const inputItems = this.leftContentInputs.map((inputItem) => {
       return (

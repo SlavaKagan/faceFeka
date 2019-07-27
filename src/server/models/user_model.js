@@ -63,8 +63,6 @@ UserSchema.methods.generateAuthToken = async function() {
   this.token = token;
   await this.save();
 
-  // this.cookie('token', token, { httpOnly: true }).sendStatus(200); // saw on tutorial, not sure if needed
-
   return token;
 };
 

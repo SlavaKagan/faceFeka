@@ -1,4 +1,6 @@
 import { WhatsOnYourMindTextAreaPlaceHolder } from './constants';
+import { CloudinaryFieldsEnum } from '../../sign/utils/enums';
+import axios from 'axios';
 
 export const generateHourString = (date) => {
   const hours = date.getHours();
@@ -14,6 +16,15 @@ export const generateDateString = (date) => {
 
 export const generateCreatePostTextAreaPlaceHolder = (firstName) => {
   return `${WhatsOnYourMindTextAreaPlaceHolder}, ${firstName}?`;
+};
+
+export const uploadImageToCloudinary = (file) => {
+  const body = new FormData();
+
+  body.append("file", file);
+  body.append("upload_preset", CloudinaryFieldsEnum.UploadPreset);
+
+  return axios.post(CloudinaryFieldsEnum.Endpoint, body);
 };
 
 export const getItemsArrayFromEnum = (enumObject) => {

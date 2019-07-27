@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RightNavItem = ( { href, name, children } ) => {
+const RightNavItem = ( { href, name, children, onClick } ) => {
   return(
     <div>
-      <a href = { href } >
+      <a href = { href } onClick = { onClick } >
         { children }
         <span>{ name }</span>
       </a>

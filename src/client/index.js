@@ -9,13 +9,15 @@ import LoadingSpinner from './main/components/general_reusable/loading_spinner';
 import { APIUserPathsEndpointsEnum as UserPaths } from '../server/utils/enums';
 import { getFromStorage } from './sign/utils/storageMethods';
 import { TokenStorageKey } from './sign/utils/constants';
+import SearchFriendsDropdown from './main/components/searchdropdown/search_friends_dropdown';
 
 class App extends Component {
   constructor( props ) {
     super( props );
 
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      isSearchFriendsMenuVisible: true
     };
 
     this.fetchLoggedIn = this.fetchLoggedIn.bind(this);
@@ -26,15 +28,18 @@ class App extends Component {
   }
 
   fetchLoggedIn() {
-    const { token } = getFromStorage(TokenStorageKey);
-    if (!token) {
-      // redirect to sign up/in
-    } else {
-      axios.get(`${UserPaths.VerifyToken}/${token}`).then((result) => {
+    const tokenObj = getFromStorage(TokenStorageKey);
+    if (!tokenObj) {
+      window.location = '/sign.html';
+    }
+    const { token } = tokenObj;
+    axios.get(`${UserPaths.VerifyToken}`, { headers: { "Authorization": `Bearer ${token}` } })
+      .then(( result ) => {
         console.log(result);
         this.setState( { loggedInUser: result.data } );
+      }).catch((error) => {
+        console.log(error);
       });
-    }
   }
 
   render() {
@@ -45,9 +50,10 @@ class App extends Component {
     return(
       <>
         <NavBar />
+        <SearchFriendsDropdown isSearchFriendsVisible = { this.state.isSearchFriendsMenuVisible } />
         { isLoggedUserLoaded }
       </>
-    );
+    )
   }
 }
 

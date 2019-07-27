@@ -4,34 +4,19 @@ import PostStat from './post_stat';
 import PostOption from './post_option';
 
 import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../utils/enums';
-import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
+import { getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
 
 class NewsFeedPost extends Component {
   constructor( props ) {
     super( props );
-    const date = new Date();
 
     this.state = {
-      author: {
-        id: 1,
-        picture: '../../../../../../resources/img/profilepicdemo/profile.jpg',
-        name: {
-          first: 'Lorem',
-          last: 'Ipsum Dolor'
-        }
-      },
-
-      privacy: PrivacyOptionsEnum.Global,
-      time: {
-        hour: generateHourString(date),
-        date: generateDateString(date)
-      },
-
-      body: {
-        content: 'Bla Bla Textarea user post',
-        attachments: []
-      },
-
+      profilepic: this.props.user.profilepic,
+      fullname: this.props.user.name.first + ' ' + this.props.user.name.last,
+      privacy: this.props.post.privacy,
+      createdAt: this.props.post.createdAt,
+      content: this.props.post.content,
+      attachments: this.props.post.attachments,
       stats: {
         likes: 0,
         comments: 0,
@@ -42,28 +27,40 @@ class NewsFeedPost extends Component {
     this.generatePostStatsItems = this.generatePostStatsItems.bind(this);
   }
 
+  getPrivacySvg() {
+    if (this.state.privacy === PrivacyOptionsEnum.Global.name) {
+      // return <PrivacyOptionsEnum.Global.svg />
+      return <img src = "../../../../../../../../resources/img/newsfeedpost/privacy-icons/everyone.svg" />
+    }
+    // return <PrivacyOptionsEnum.Private.svg />
+    return <img src = "../../../../../../../../resources/img/newsfeedpost/privacy-icons/onlyme.svg" />
+  }
+
   render() {
     return (
       <div className = "user-post">
         <div className = "header-container">
           <div className = "post-header">
             <div className = "left-picture circle">
-              <img src = { this.state.author.picture } className = "cover" alt = "author-picture"/>
+              {/*<img src = { this.props.data.profilepic } className = "cover" alt = "author-picture"/>*/}
+              <img src = { this.state.profilepic } className = "cover" alt = "author-picture"/>
             </div>
 
             <div className = "right-details">
-              <div className = "author-name">{ this.state.author.name.first } { this.state.author.name.last }</div>
+              <div className = "author-name">
+                { `${this.state.fullname}` }
+              </div>
 
               <div className = "more-details">
                 <div className = "privacy-container">
                   <div className = "privacy">
-                    <this.state.privacy.svg />
+                    { this.getPrivacySvg() }
                   </div>
                 </div>
 
                 <div className = "date-and-hour">
-                  <div className = "hour">{ this.state.time.hour }</div>
-                  <div className = "date">{ this.state.time.date }</div>
+                  <div className = "hour">{ this.state.createdAt }</div>
+                  <div className = "date">{ this.state.createdAt }</div>
                 </div>
               </div>
             </div>
@@ -72,7 +69,7 @@ class NewsFeedPost extends Component {
 
         <div className = "post-body">
           <div className = "content-container">
-            <div className = "content">{ this.state.body.content }</div>
+            <div className = "content">{ this.state.content }</div>
           </div>
         </div>
 
@@ -96,7 +93,7 @@ class NewsFeedPost extends Component {
   };
 
   generatePostAttachmentsItems() {
-    return this.state.body.attachments.map( (attachment) => {
+    return this.state.attachments.map( (attachment) => {
       return(
         <img src = { attachment } alt = "attachment" />
       );
