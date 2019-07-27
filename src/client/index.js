@@ -17,7 +17,8 @@ class App extends Component {
 
     this.state = {
       loggedInUser: null,
-      isSearchFriendsMenuVisible: false
+      isSearchFriendsMenuVisible: false,
+      searchBarContent: '*'
     };
 
     this.fetchLoggedIn = this.fetchLoggedIn.bind(this);
@@ -49,9 +50,12 @@ class App extends Component {
 
     return(
       <>
-        <NavBar OnClickingSearchBar = { () => this.setState( { isSearchFriendsMenuVisible: true } ) } />
+        <NavBar
+          OnClickingSearchBar = { () => this.setState( { isSearchFriendsMenuVisible: true } ) }
+          onChangeSearchBar = { (event) => this.setState( { searchBarContent: event.target.value } ) } />
         <SearchFriendsDropdown
           isSearchFriendsVisible = { this.state.isSearchFriendsMenuVisible }
+          searchTerm = { this.state.searchBarContent }
           onCloseXButton = { () => this.setState( { isSearchFriendsMenuVisible: !this.state.isSearchFriendsMenuVisible } ) } />
         { isLoggedUserLoaded }
       </>

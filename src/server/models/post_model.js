@@ -33,10 +33,6 @@ const PostSchema = new mongoose.Schema({
     comments: {
       type: Number,
       required: true
-    },
-    shares: {
-      type: Number,
-      required: true
     }
   }
 }, schemaOptions);

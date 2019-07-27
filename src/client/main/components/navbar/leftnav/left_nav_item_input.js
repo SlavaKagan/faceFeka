@@ -7,12 +7,6 @@ import { SearchBarPlaceholder } from '../../../utils/constants';
 class LeftNavItemInput extends Component {
   constructor( props ) {
     super( props );
-
-    this.state = {
-      content: null
-    };
-
-    this.onContentChange = this.onContentChange.bind(this);
   }
 
   render() {
@@ -23,18 +17,11 @@ class LeftNavItemInput extends Component {
           <input
             type = "text"
             placeholder = { SearchBarPlaceholder }
-            onChange = { this.onContentChange }
+            onChange = { this.props.onChangeSearchBar }
             onClick = { this.props.OnClickingSearchBar } />
         </div>
       </div>
     );
-  };
-
-  onContentChange(event) {
-    this.setState( {
-      content: event.currentTarget.value
-    });
-    // this.searchAndFilter();
   };
 
   /*searchAndFilter() {

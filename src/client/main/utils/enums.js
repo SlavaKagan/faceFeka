@@ -1,7 +1,7 @@
 import { HomeSVG, ProfileSVG, FriendsSVG, LogoutSVG } from '../components/svgs/nav_bar_svgs';
 import { AddPhotosSVG, SharePostSVG, VisibleToSVG } from '../components/svgs/create_post_svgs';
 import { EveryoneSVG, OnlyMeSVG } from '../components/svgs/visibility_svgs';
-import { LikeSVG, CommentSVG, ShareSVG } from '../components/svgs/newsfeed_post_svgs';
+import { LikeSVG, CommentSVG } from '../components/svgs/newsfeed_post_svgs';
 
 export const RightNavBarPagesEnum = {
   Home: {
@@ -10,18 +10,14 @@ export const RightNavBarPagesEnum = {
     href: ""
   },
   Profile: {
-    name: 'Profile',
-    svg: ProfileSVG
+    name: 'Game',
+    svg: ProfileSVG,
+    href: "localhost:8000/index.html"
   },
   Friends: {
     name: 'Friends',
     svg: FriendsSVG
   },
-  // Notifications: {
-  //   name: 'Notifications',
-  //   svg: NotificationsSVG,
-  //   href: null
-  // }
   Logout: {
     name: 'Logout',
     svg: LogoutSVG
@@ -63,9 +59,5 @@ export const PostStatOptionsEnum = {
   Comments: {
     name: 'Comments',
     svg: CommentSVG
-  },
-  Shares: {
-    name: 'Shares',
-    svg: ShareSVG
   }
 };

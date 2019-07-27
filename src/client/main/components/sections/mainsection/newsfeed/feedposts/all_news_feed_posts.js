@@ -20,7 +20,7 @@ class AllNewsFeedPosts extends Component {
   callPostsAPI() {
     const { Posts, FriendsPosts } = APIPostPathsEndpointsEnum;
     const { token } = getFromStorage(TokenStorageKey);
-    return axios.get(`${ Posts }/${ FriendsPosts }`, { headers: { "Authorization": `Bearer ${ token }` } });
+    return axios.get(`${Posts}/${FriendsPosts}`, { headers: { "Authorization": `Bearer ${ token }` } });
   };
 
   fetchAllPosts() {
@@ -48,7 +48,7 @@ class AllNewsFeedPosts extends Component {
   getAllPosts() {
     if (this.state.posts) {
       return this.state.posts.map(({ user, post }) => {
-        return <NewsFeedPost user={ user } post={ post }/>
+        return <NewsFeedPost user = { user } post = { post }/>
       });
     }
   }
@@ -60,7 +60,7 @@ class AllNewsFeedPosts extends Component {
       this.getAllPosts();
 
     return (
-      <div className="all-posts">
+      <div className = "all-posts">
         { isLoadingOrPosts }
       </div>
     );
