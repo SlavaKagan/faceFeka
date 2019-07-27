@@ -349,6 +349,7 @@ nav .rightnav div a span {
 }
 
 .search-friends-dropdown .results .result .result-name {
+  text-transform: capitalize;
   margin-left: 20px;
   font-size: 15px;
 }
@@ -357,12 +358,15 @@ nav .rightnav div a span {
   background: linear-gradient(rgba(62, 194, 45, 0.28) 0%, rgba(57, 255, 99, 0.2) 100%);
   border: 1px solid rgba(153, 153, 153, 0.5);
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
 }
 
-.search-friends-dropdown .results .result .add div {
+.search-friends-dropdown .results .result .result-add span {
   font-size: 12px;
   padding: 3px 8px;
-  /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);*/
+
+  cursor: pointer;
 }
 
 /* --------------------------- */
@@ -712,6 +716,7 @@ nav .rightnav div a span {
 }
 
 .user-post .header-container .post-header .right-details .author-name {
+  text-transform: capitalize;
   font-weight: bolder;
 }
 
@@ -728,7 +733,7 @@ nav .rightnav div a span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 90px;
+  width: 115px;
 
   margin: 0 10px;
   font-size: 12px;
@@ -987,6 +992,10 @@ nav .rightnav div a span {
 .visible {
   visibility: visible;
   opacity: 1;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .selected {

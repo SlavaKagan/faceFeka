@@ -16,6 +16,7 @@ module.exports = {
 
   APIUserPathsEndpointsEnum: {
     Users: 'users',
+    NonFriends: 'nonfriends',
     Login: 'login',
     Logout: 'logout',
     VerifyToken: 'verifytoken',

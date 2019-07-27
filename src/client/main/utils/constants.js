@@ -7,3 +7,4 @@ export const CreatePost = 'Create Post';
 export const Selected = 'selected';
 export const Visible = 'visible';
 export const Animate = 'animate';
+export const Flex = 'flex';

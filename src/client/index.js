@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       loggedInUser: null,
-      isSearchFriendsMenuVisible: true
+      isSearchFriendsMenuVisible: false
     };
 
     this.fetchLoggedIn = this.fetchLoggedIn.bind(this);
@@ -49,8 +49,10 @@ class App extends Component {
 
     return(
       <>
-        <NavBar />
-        <SearchFriendsDropdown isSearchFriendsVisible = { this.state.isSearchFriendsMenuVisible } />
+        <NavBar OnClickingSearchBar = { () => this.setState( { isSearchFriendsMenuVisible: true } ) } />
+        <SearchFriendsDropdown
+          isSearchFriendsVisible = { this.state.isSearchFriendsMenuVisible }
+          onCloseXButton = { () => this.setState( { isSearchFriendsMenuVisible: !this.state.isSearchFriendsMenuVisible } ) } />
         { isLoggedUserLoaded }
       </>
     )
