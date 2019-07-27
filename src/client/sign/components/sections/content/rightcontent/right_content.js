@@ -6,17 +6,18 @@ import SubmitInputButton from '../../../general_reusable/submit_input';
 import LoadingSpinner from '../../../../../main/components/general_reusable/loading_spinner';
 import FileInput from '../../../../../main/components/general_reusable/file_input';
 
-import { CloudinaryFieldsEnum, InputTypesEnum } from '../../../../utils/enums';
+import { InputTypesEnum } from '../../../../utils/enums';
 import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
 import { setInStorage } from '../../../../utils/storageMethods';
 import { TokenStorageKey } from '../../../../utils/constants';
+import { uploadImageToCloudinary } from '../../../../../main/utils/helperMethods';
 
 class RightContent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
+      isLoading: false,
       formdata: null,
       profilepic: null
     };
@@ -61,30 +62,27 @@ class RightContent extends Component {
       profilepic: this.state.profilepic
     };
 
-    this.setState( { loading: true } );
+    this.setState( { isLoading: true } );
 
-    axios.post(UserPaths.Users, newUser).then((result) => {
-      console.log(result);
-      this.setState( { loading: false } );
-      setInStorage(TokenStorageKey, { token: result.data.token });
-    }).catch((error) => {
-      console.log(error.response);
-    });
+    axios.post(UserPaths.Users, newUser)
+      .then((result) => {
+        console.log(result);
+        this.setState( { isLoading: false } );
+        setInStorage(TokenStorageKey, { token: result.data.token });
+        window.location = '/';
+      }).catch((error) => {
+        console.log(error.response);
+      });
   }
 
   uploadImage(event) {
     const files = event.target.files;
-    const body = new FormData();
 
-    body.append("file", files[0]);
-    body.append("upload_preset", CloudinaryFieldsEnum.UploadPreset);
-
-    this.setState( { loading: true } );
-
-    axios.post(CloudinaryFieldsEnum.Endpoint, body).then((result) => {
+    this.setState( { isLoading: true } );
+    uploadImageToCloudinary(files[0]).then((result) => {
       console.log(result);
+      this.setState( { isLoading: false } );
       this.setState( { profilepic: result.data.url } );
-      this.setState( { loading: false } );
     }).catch((error) => {
       console.log(error);
     });
@@ -94,7 +92,7 @@ class RightContent extends Component {
     const { header } = this.props;
     const loadingCircleColorBlue = "rgba(0, 165, 169, 0.92)";
 
-    const isLoadingOrSubmitButton = this.state.loading ?
+    const isLoadingOrSubmitButton = this.state.isLoading ?
       <LoadingSpinner circleColor = { loadingCircleColorBlue } /> :
       <SubmitInputButton />;
 

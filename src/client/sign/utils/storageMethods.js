@@ -19,3 +19,11 @@ export const getFromStorage = (tokenStorageKey) => {
     return null;
   }
 };
+
+export const removeFromStorage = (tokenStorageKey) => {
+  try {
+    localStorage.removeItem(tokenStorageKey);
+  } catch (e) {
+    console.log(e);
+  }
+};

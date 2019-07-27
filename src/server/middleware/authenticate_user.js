@@ -16,6 +16,7 @@ const authenticateUser = async (req, res, next) => {
     req.userFromAuth = user;
     next();
   } catch (e) {
+    console.log(e);
     res.status(401).send({ error: "You're not authenticated!" });
   }
 };

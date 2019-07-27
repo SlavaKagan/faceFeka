@@ -9,7 +9,7 @@ const Sections = ( { loggedInUser } ) => {
       <LeftSection
         loggedInUserName = { loggedInUser.name }
         loggedInUserPic = { loggedInUser.profilepic } />
-      {/*<MainSection loggedInUser = { loggedInUser } />*/}
+      <MainSection loggedInUser = { loggedInUser } />
     </div>
   );
 };
