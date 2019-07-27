@@ -45,7 +45,7 @@ class AllNewsFeedPosts extends Component {
   getAllPosts() {
     const posts = this.state.posts;
     return posts.map( ({ user, post }) => {
-      return <NewsFeedPost user = {user} post = {post}/>
+      return <NewsFeedPost user = {user} post = {post} />
     });
   }
 
