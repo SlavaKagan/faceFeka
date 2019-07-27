@@ -609,7 +609,7 @@ module.exports = function (it, key) {
 var DESCRIPTORS = __webpack_require__(4);
 var IE8_DOM_DEFINE = __webpack_require__(69);
 var anObject = __webpack_require__(16);
-var toPrimitive = __webpack_require__(43);
+var toPrimitive = __webpack_require__(42);
 
 var nativeDefineProperty = Object.defineProperty;
 
@@ -787,7 +787,7 @@ var Flex = 'flex';
 
 var toIndexedObject = __webpack_require__(14);
 var addToUnscopables = __webpack_require__(111);
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 var InternalStateModule = __webpack_require__(40);
 var defineIterator = __webpack_require__(82);
 
@@ -962,10 +962,10 @@ var isObject = __webpack_require__(8);
 var anObject = __webpack_require__(16);
 var toObject = __webpack_require__(21);
 var toIndexedObject = __webpack_require__(14);
-var toPrimitive = __webpack_require__(43);
+var toPrimitive = __webpack_require__(42);
 var createPropertyDescriptor = __webpack_require__(34);
-var nativeObjectCreate = __webpack_require__(46);
-var objectKeys = __webpack_require__(47);
+var nativeObjectCreate = __webpack_require__(45);
+var objectKeys = __webpack_require__(46);
 var getOwnPropertyNamesModule = __webpack_require__(58);
 var getOwnPropertyNamesExternal = __webpack_require__(110);
 var getOwnPropertySymbolsModule = __webpack_require__(75);
@@ -975,15 +975,15 @@ var propertyIsEnumerableModule = __webpack_require__(53);
 var hide = __webpack_require__(12);
 var redefine = __webpack_require__(38);
 var shared = __webpack_require__(35);
-var sharedKey = __webpack_require__(44);
-var hiddenKeys = __webpack_require__(45);
+var sharedKey = __webpack_require__(43);
+var hiddenKeys = __webpack_require__(44);
 var uid = __webpack_require__(56);
 var wellKnownSymbol = __webpack_require__(3);
 var wrappedWellKnownSymbolModule = __webpack_require__(78);
 var defineWellKnownSymbol = __webpack_require__(79);
 var setToStringTag = __webpack_require__(51);
 var InternalStateModule = __webpack_require__(40);
-var $forEach = __webpack_require__(48).forEach;
+var $forEach = __webpack_require__(47).forEach;
 
 var HIDDEN = sharedKey('hidden');
 var SYMBOL = 'Symbol';
@@ -1337,7 +1337,7 @@ defineWellKnownSymbol('iterator');
 
 var $ = __webpack_require__(1);
 var DESCRIPTORS = __webpack_require__(4);
-var create = __webpack_require__(46);
+var create = __webpack_require__(45);
 
 // `Object.create` method
 // https://tc39.github.io/ecma262/#sec-object.create
@@ -1524,7 +1524,7 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return generateCreatePostTextAreaPlaceHolder; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return uploadImageToCloudinary; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getItemsArrayFromEnum; });
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(42);
+/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(41);
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(143);
 /* harmony import */ var core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_1__);
@@ -1567,7 +1567,7 @@ var DESCRIPTORS = __webpack_require__(4);
 var propertyIsEnumerableModule = __webpack_require__(53);
 var createPropertyDescriptor = __webpack_require__(34);
 var toIndexedObject = __webpack_require__(14);
-var toPrimitive = __webpack_require__(43);
+var toPrimitive = __webpack_require__(42);
 var has = __webpack_require__(9);
 var IE8_DOM_DEFINE = __webpack_require__(69);
 
@@ -1730,8 +1730,8 @@ var global = __webpack_require__(2);
 var isObject = __webpack_require__(8);
 var hide = __webpack_require__(12);
 var objectHas = __webpack_require__(9);
-var sharedKey = __webpack_require__(44);
-var hiddenKeys = __webpack_require__(45);
+var sharedKey = __webpack_require__(43);
+var hiddenKeys = __webpack_require__(44);
 
 var WeakMap = global.WeakMap;
 var set, get, has;
@@ -1790,20 +1790,6 @@ module.exports = {
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(1);
-var bind = __webpack_require__(114);
-
-// `Function.prototype.bind` method
-// https://tc39.github.io/ecma262/#sec-function.prototype.bind
-$({ target: 'Function', proto: true }, {
-  bind: bind
-});
-
-
-/***/ }),
-/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1866,7 +1852,7 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(8);
@@ -1886,7 +1872,7 @@ module.exports = function (input, PREFERRED_STRING) {
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(35);
@@ -1900,23 +1886,23 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(16);
 var defineProperties = __webpack_require__(77);
 var enumBugKeys = __webpack_require__(60);
-var hiddenKeys = __webpack_require__(45);
+var hiddenKeys = __webpack_require__(44);
 var html = __webpack_require__(103);
 var documentCreateElement = __webpack_require__(65);
-var sharedKey = __webpack_require__(44);
+var sharedKey = __webpack_require__(43);
 var IE_PROTO = sharedKey('IE_PROTO');
 
 var PROTOTYPE = 'prototype';
@@ -1962,7 +1948,7 @@ hiddenKeys[IE_PROTO] = true;
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var internalObjectKeys = __webpack_require__(73);
@@ -1976,7 +1962,7 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var bind = __webpack_require__(80);
@@ -2047,10 +2033,24 @@ module.exports = {
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = {};
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(1);
+var bind = __webpack_require__(114);
+
+// `Function.prototype.bind` method
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+$({ target: 'Function', proto: true }, {
+  bind: bind
+});
 
 
 /***/ }),
@@ -2238,7 +2238,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 var has = __webpack_require__(9);
 var toObject = __webpack_require__(21);
-var sharedKey = __webpack_require__(44);
+var sharedKey = __webpack_require__(43);
 var CORRECT_PROTOTYPE_GETTER = __webpack_require__(84);
 
 var IE_PROTO = sharedKey('IE_PROTO');
@@ -2283,7 +2283,7 @@ module.exports = function (METHOD_NAME) {
 "use strict";
 
 var $ = __webpack_require__(1);
-var $map = __webpack_require__(48).map;
+var $map = __webpack_require__(47).map;
 var arrayMethodHasSpeciesSupport = __webpack_require__(63);
 
 // `Array.prototype.map` method
@@ -2433,7 +2433,7 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 var has = __webpack_require__(9);
 var toIndexedObject = __webpack_require__(14);
 var indexOf = __webpack_require__(74).indexOf;
-var hiddenKeys = __webpack_require__(45);
+var hiddenKeys = __webpack_require__(44);
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -2514,7 +2514,7 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 var DESCRIPTORS = __webpack_require__(4);
 var definePropertyModule = __webpack_require__(10);
 var anObject = __webpack_require__(16);
-var objectKeys = __webpack_require__(47);
+var objectKeys = __webpack_require__(46);
 
 // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -2624,7 +2624,7 @@ var hide = __webpack_require__(12);
 var redefine = __webpack_require__(38);
 var wellKnownSymbol = __webpack_require__(3);
 var IS_PURE = __webpack_require__(39);
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 var IteratorsCore = __webpack_require__(83);
 
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
@@ -3439,7 +3439,7 @@ module.exports = Cancel;
 
 "use strict";
 
-var toPrimitive = __webpack_require__(43);
+var toPrimitive = __webpack_require__(42);
 var definePropertyModule = __webpack_require__(10);
 var createPropertyDescriptor = __webpack_require__(34);
 
@@ -3456,7 +3456,7 @@ module.exports = function (object, key, value) {
 
 "use strict";
 
-var $forEach = __webpack_require__(48).forEach;
+var $forEach = __webpack_require__(47).forEach;
 var sloppyArrayMethod = __webpack_require__(98);
 
 // `Array.prototype.forEach` method implementation
@@ -3747,7 +3747,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var wellKnownSymbol = __webpack_require__(3);
-var create = __webpack_require__(46);
+var create = __webpack_require__(45);
 var hide = __webpack_require__(12);
 
 var UNSCOPABLES = wellKnownSymbol('unscopables');
@@ -3772,10 +3772,10 @@ module.exports = function (key) {
 "use strict";
 
 var IteratorPrototype = __webpack_require__(83).IteratorPrototype;
-var create = __webpack_require__(46);
+var create = __webpack_require__(45);
 var createPropertyDescriptor = __webpack_require__(34);
 var setToStringTag = __webpack_require__(51);
-var Iterators = __webpack_require__(49);
+var Iterators = __webpack_require__(48);
 
 var returnThis = function () { return this; };
 
@@ -5219,7 +5219,7 @@ module.exports = function spread(callback) {
 "use strict";
 
 var $ = __webpack_require__(1);
-var $filter = __webpack_require__(48).filter;
+var $filter = __webpack_require__(47).filter;
 var arrayMethodHasSpeciesSupport = __webpack_require__(63);
 
 // `Array.prototype.filter` method
@@ -5305,7 +5305,7 @@ $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
 
 var $ = __webpack_require__(1);
 var toObject = __webpack_require__(21);
-var nativeKeys = __webpack_require__(47);
+var nativeKeys = __webpack_require__(46);
 var fails = __webpack_require__(5);
 
 var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
@@ -5351,7 +5351,7 @@ $({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || SLOPPY_METHOD }, {
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(4);
-var objectKeys = __webpack_require__(47);
+var objectKeys = __webpack_require__(46);
 var toIndexedObject = __webpack_require__(14);
 var propertyIsEnumerable = __webpack_require__(53).f;
 
@@ -6051,7 +6051,7 @@ var es_symbol_iterator = __webpack_require__(23);
 var es_array_iterator = __webpack_require__(18);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.bind.js
-var es_function_bind = __webpack_require__(41);
+var es_function_bind = __webpack_require__(49);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.create.js
 var es_object_create = __webpack_require__(24);
@@ -6241,7 +6241,6 @@ var constants = __webpack_require__(17);
 
 
 
-
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6252,9 +6251,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -6270,16 +6269,9 @@ function (_Component) {
   _inherits(LeftNavItemInput, _Component);
 
   function LeftNavItemInput(props) {
-    var _this;
-
     _classCallCheck(this, LeftNavItemInput);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LeftNavItemInput).call(this, props));
-    _this.state = {
-      content: null
-    };
-    _this.onContentChange = _this.onContentChange.bind(_assertThisInitialized(_this));
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(LeftNavItemInput).call(this, props));
   }
 
   _createClass(LeftNavItemInput, [{
@@ -6292,16 +6284,9 @@ function (_Component) {
       }, react_default.a.createElement(search, null), react_default.a.createElement("input", {
         type: "text",
         placeholder: constants["c" /* SearchBarPlaceholder */],
-        onChange: this.onContentChange,
+        onChange: this.props.onChangeSearchBar,
         onClick: this.props.OnClickingSearchBar
       })));
-    }
-  }, {
-    key: "onContentChange",
-    value: function onContentChange(event) {
-      this.setState({
-        content: event.currentTarget.value
-      }); // this.searchAndFilter();
     }
   }]);
 
@@ -6315,19 +6300,21 @@ function (_Component) {
 
 
 var left_nav_LeftNav = function LeftNav(_ref) {
-  var OnClickingSearchBar = _ref.OnClickingSearchBar;
+  var OnClickingSearchBar = _ref.OnClickingSearchBar,
+      onChangeSearchBar = _ref.onChangeSearchBar;
   return react_default.a.createElement("div", {
     className: "leftnav"
   }, react_default.a.createElement(left_nav_item_logo, {
     href: ""
   }), react_default.a.createElement(left_nav_item_input, {
-    OnClickingSearchBar: OnClickingSearchBar
+    OnClickingSearchBar: OnClickingSearchBar,
+    onChangeSearchBar: onChangeSearchBar
   }));
 };
 
 /* harmony default export */ var left_nav = (left_nav_LeftNav);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__(42);
+var es_array_concat = __webpack_require__(41);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(31);
@@ -6340,10 +6327,12 @@ var right_nav_item_RightNavItem = function RightNavItem(_ref) {
   var href = _ref.href,
       name = _ref.name,
       children = _ref.children,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      blank = _ref.blank;
   return react_default.a.createElement("div", null, react_default.a.createElement("a", {
     href: href,
-    onClick: onClick
+    onClick: onClick,
+    target: blank ? "_blank" : ""
   }, children, react_default.a.createElement("span", null, name)));
 };
 
@@ -6701,38 +6690,7 @@ var comment_icon_SvgCommentIcon = function SvgCommentIcon(props) {
 };
 
 /* harmony default export */ var comment_icon = (comment_icon_SvgCommentIcon);
-// CONCATENATED MODULE: ./resources/img/newsfeedpost/share-icon.svg
-function share_icon_extends() { share_icon_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return share_icon_extends.apply(this, arguments); }
-
-
-
-var share_icon_ref =
-/*#__PURE__*/
-react_default.a.createElement("path", {
-  d: "M685.7 168.4c4.7 0 9.4-3.1 12.5-6.2 14-20.3 35.9-31.2 59.3-31.2 9.4 0 15.6-6.2 15.6-15.6s-6.2-15.6-15.6-15.6c-34.3 0-65.5 17.2-85.8 45.3-4.7 7.8-3.1 17.2 4.7 21.8 3.1 1.5 6.2 1.5 9.3 1.5zM130.2 438.4c-7.8-1.6-17.2 4.7-18.7 12.5-1.6 6.2-1.6 7.8-1.6 12.5v3.1c0 9.4 6.2 15.6 15.6 15.6s15.6-6.2 15.6-15.6v-4.7-4.7c3.1-7.8-1.6-15.6-10.9-18.7zM226.9 352.5c-39 0-73.3 18.7-95.2 51.5-4.7 7.8-3.1 17.2 4.7 21.8 3.1 1.6 6.2 3.1 9.4 3.1 4.7 0 9.4-3.1 12.5-6.2 15.6-23.4 42.1-37.5 70.2-37.5 9.4 0 15.6-6.2 15.6-15.6-1.6-10.8-9.4-17.1-17.2-17.1z"
-});
-
-var share_icon_ref2 =
-/*#__PURE__*/
-react_default.a.createElement("path", {
-  d: "M741.9 503.9c-90.5 0-170.1 49.9-212.2 124.8l-110.8-54.6c17.1-31.2 28-67.1 28-106.1 0-25-4.7-48.4-10.9-70.2l170.1-73.3c35.9 45.3 90.5 73.3 152.9 73.3 107.7 0 195.1-87.4 195.1-195.1S866.7 7.7 759 7.7c-107.6 0-195 87.3-195 195 0 23.4 4.7 46.8 12.5 67.1L408 341.6C369 285.4 303.4 248 228.5 248 108.3 248 10 346.3 10 466.5S108.3 685 228.5 685c59.3 0 113.9-23.4 152.9-62.4L507.8 685c-4.7 20.3-7.8 40.6-7.8 62.4 0 134.2 109.2 245 245 245 134.2 0 245-109.2 245-245S876.1 503.9 741.9 503.9zm15.6-435.4c73.3 0 132.6 59.3 132.6 132.6s-59.3 132.6-132.6 132.6-132.6-59.3-132.6-132.6c-1.6-73.3 59.2-132.6 132.6-132.6zM226.9 624.1c-85.8 0-156.1-70.2-156.1-156.1 0-85.8 70.2-156.1 156.1-156.1S383 382.2 383 468s-70.3 156.1-156.1 156.1zm515 305.8c-99.9 0-182.6-81.1-182.6-182.6 0-101.4 81.1-182.6 182.6-182.6s182.6 81.1 182.6 182.6-82.7 182.6-182.6 182.6z"
-});
-
-var share_icon_ref3 =
-/*#__PURE__*/
-react_default.a.createElement("path", {
-  d: "M726.3 603.8c-42.1 0-82.7 21.8-106.1 56.2-4.7 7.8-3.1 17.2 4.7 21.8 3.1 1.6 6.2 3.1 9.4 3.1 4.7 0 9.4-3.1 12.5-6.2 18.7-26.5 48.4-43.7 81.1-43.7 9.4 0 15.6-6.2 15.6-15.6-1.6-7.8-9.4-15.6-17.2-15.6z"
-});
-
-var share_icon_SvgShareIcon = function SvgShareIcon(props) {
-  return react_default.a.createElement("svg", share_icon_extends({
-    viewBox: "0 0 1000 1000"
-  }, props), share_icon_ref, share_icon_ref2, share_icon_ref3);
-};
-
-/* harmony default export */ var share_icon = (share_icon_SvgShareIcon);
 // CONCATENATED MODULE: ./src/client/main/components/svgs/newsfeed_post_svgs.js
-
 
 
 
@@ -6748,18 +6706,14 @@ var RightNavBarPagesEnum = {
     href: ""
   },
   Profile: {
-    name: 'Profile',
-    svg: profile
+    name: 'Game',
+    svg: profile,
+    href: "localhost:8000/index.html"
   },
   Friends: {
     name: 'Friends',
     svg: friends
   },
-  // Notifications: {
-  //   name: 'Notifications',
-  //   svg: NotificationsSVG,
-  //   href: null
-  // }
   Logout: {
     name: 'Logout',
     svg: navbar_logout
@@ -6798,10 +6752,6 @@ var PostStatOptionsEnum = {
   Comments: {
     name: 'Comments',
     svg: comment_icon
-  },
-  Shares: {
-    name: 'Shares',
-    svg: share_icon
   }
 };
 // EXTERNAL MODULE: ./src/server/utils/enums.js
@@ -6849,7 +6799,8 @@ var right_nav_RightNav = function RightNav() {
     href: RightNavBarPagesEnum.Home.href
   }, react_default.a.createElement(RightNavBarPagesEnum.Home.svg, null)), react_default.a.createElement(right_nav_item, {
     name: RightNavBarPagesEnum.Profile.name,
-    href: RightNavBarPagesEnum.Profile.href
+    href: RightNavBarPagesEnum.Profile.href,
+    blank: true
   }, react_default.a.createElement(RightNavBarPagesEnum.Profile.svg, null)), react_default.a.createElement(right_nav_item, {
     name: RightNavBarPagesEnum.Friends.name,
     href: RightNavBarPagesEnum.Friends.href
@@ -6866,9 +6817,11 @@ var right_nav_RightNav = function RightNav() {
 
 
 var nav_bar_NavBar = function NavBar(_ref) {
-  var OnClickingSearchBar = _ref.OnClickingSearchBar;
+  var OnClickingSearchBar = _ref.OnClickingSearchBar,
+      onChangeSearchBar = _ref.onChangeSearchBar;
   return react_default.a.createElement("nav", null, react_default.a.createElement(left_nav, {
-    OnClickingSearchBar: OnClickingSearchBar
+    OnClickingSearchBar: OnClickingSearchBar,
+    onChangeSearchBar: onChangeSearchBar
   }), react_default.a.createElement(right_nav, null));
 };
 
@@ -7041,8 +6994,7 @@ function (_Component) {
       attachments: _this.props.post.attachments,
       stats: {
         likes: 0,
-        comments: 0,
-        shares: 0
+        comments: 0
       }
     };
     _this.generatePostStatsItems = _this.generatePostStatsItems.bind(news_feed_post_assertThisInitialized(_this));
@@ -7806,8 +7758,7 @@ function (_Component) {
         privacy: this.state.privacy,
         stats: {
           likes: 0,
-          comments: 0,
-          shares: 0
+          comments: 0
         }
       };
       console.log(newPost);
@@ -7986,7 +7937,8 @@ function (_Component) {
     _this = search_friends_dropdown_possibleConstructorReturn(this, search_friends_dropdown_getPrototypeOf(SearchFriendsDropdown).call(this, props));
     _this.state = {
       isLoading: true,
-      results: []
+      results: [],
+      term: _this.props.searchTerm
     };
     _this.getAllNonAlreadyFriends = _this.getAllNonAlreadyFriends.bind(search_friends_dropdown_assertThisInitialized(_this));
     return _this;
@@ -8000,7 +7952,7 @@ function (_Component) {
       var _getFromStorage = Object(storageMethods["a" /* getFromStorage */])(utils_constants["e" /* TokenStorageKey */]),
           token = _getFromStorage.token;
 
-      axios_default.a.get("".concat(enums["APIUserPathsEndpointsEnum"].Users, "/").concat(enums["APIUserPathsEndpointsEnum"].NonFriends), {
+      axios_default.a.get("".concat(enums["APIUserPathsEndpointsEnum"].Users, "/").concat(enums["APIUserPathsEndpointsEnum"].NonFriends, "/").concat(this.state.term), {
         headers: {
           "Authorization": "Bearer ".concat(token)
         }
@@ -8025,6 +7977,12 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this3 = this;
+
+      if (this.state.term !== this.props.searchTerm) {
+        this.setState({
+          term: this.props.searchTerm
+        }, this.getAllNonAlreadyFriends);
+      }
 
       var isSearchFriendsVisible = this.props.isSearchFriendsVisible;
       var isLoadingOrResults = this.state.isLoading ? react_default.a.createElement(loading_spinner["a" /* default */], null) : react_default.a.createElement(search_results_list, {
@@ -8105,7 +8063,8 @@ function (_Component) {
     _this = client_possibleConstructorReturn(this, client_getPrototypeOf(App).call(this, props));
     _this.state = {
       loggedInUser: null,
-      isSearchFriendsMenuVisible: false
+      isSearchFriendsMenuVisible: false,
+      searchBarContent: '*'
     };
     _this.fetchLoggedIn = _this.fetchLoggedIn.bind(client_assertThisInitialized(_this));
     return _this;
@@ -8155,9 +8114,15 @@ function (_Component) {
           return _this3.setState({
             isSearchFriendsMenuVisible: true
           });
+        },
+        onChangeSearchBar: function onChangeSearchBar(event) {
+          return _this3.setState({
+            searchBarContent: event.target.value
+          });
         }
       }), react_default.a.createElement(search_friends_dropdown, {
         isSearchFriendsVisible: this.state.isSearchFriendsMenuVisible,
+        searchTerm: this.state.searchBarContent,
         onCloseXButton: function onCloseXButton() {
           return _this3.setState({
             isSearchFriendsMenuVisible: !_this3.state.isSearchFriendsMenuVisible

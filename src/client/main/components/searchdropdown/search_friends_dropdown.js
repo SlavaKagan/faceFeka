@@ -15,7 +15,8 @@ class SearchFriendsDropdown extends Component {
 
     this.state = {
       isLoading: true,
-      results: []
+      results: [],
+      term: this.props.searchTerm
     };
 
     this.getAllNonAlreadyFriends = this.getAllNonAlreadyFriends.bind(this);
@@ -23,7 +24,7 @@ class SearchFriendsDropdown extends Component {
 
   getAllNonAlreadyFriends() {
     const { token } = getFromStorage(TokenStorageKey);
-    axios.get(`${UserPaths.Users}/${UserPaths.NonFriends}`, { headers: { "Authorization": `Bearer ${ token }` } })
+    axios.get(`${UserPaths.Users}/${UserPaths.NonFriends}/${this.state.term}`, { headers: { "Authorization": `Bearer ${ token }` } })
       .then((result) => {
         console.log(result);
         this.setState( { results: result.data } , this.setState( { isLoading: false } ) );
@@ -37,6 +38,9 @@ class SearchFriendsDropdown extends Component {
   }
 
   render() {
+    if (this.state.term !== this.props.searchTerm) {
+      this.setState( { term: this.props.searchTerm } , this.getAllNonAlreadyFriends);
+    }
     const { isSearchFriendsVisible } = this.props;
 
     const isLoadingOrResults = this.state.isLoading ?

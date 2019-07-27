@@ -103,8 +103,7 @@ class MainSectionItemCreatePost extends Component {
       privacy: this.state.privacy,
       stats: {
         likes: 0,
-        comments: 0,
-        shares: 0
+        comments: 0
       }
     };
 

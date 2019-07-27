@@ -29,13 +29,21 @@ router.get(`/${Users}`, authenticateUser, async (req, res) => {
 });
 
 /** GET ALL USER's NON FRIENDS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
-router.get(`/${Users}/${NonFriends}`, authenticateUser, async (req, res) => {
+router.get(`/${Users}/${NonFriends}/:term`, authenticateUser, async (req, res) => {
   try {
+    const term = req.params.term;
     const users = await User.find({});
+
     const afterFilter = users.filter(user =>
       !req.userFromAuth.friends.includes(user._id) &&
       user.id != req.userFromAuth._id);
-    res.send(afterFilter);
+
+    const termFilter = afterFilter.filter(user =>
+      user.name.first.includes(term) ||
+      user.name.last.includes(term));
+
+    const chosenFilter = (term === '*' || term === '') ? afterFilter : termFilter;
+    res.send(chosenFilter);
   } catch (e) {
     res.status(400).send(e);
   }
@@ -100,6 +108,7 @@ router.patch(`/${Users}/${AddFriendship}/:id`, authenticateUser, async (req,res)
 
     res.send({ user1AfterFriendship, user2AfterFriendship });
   } catch (e) {
+    console.log(e);
     return res.status(500).send();
   }
 });

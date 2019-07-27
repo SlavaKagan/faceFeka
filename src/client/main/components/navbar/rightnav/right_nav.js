@@ -31,7 +31,8 @@ const RightNav = () => {
 
       <RightNavItem
         name = { RightNavBarPagesEnum.Profile.name }
-        href = { RightNavBarPagesEnum.Profile.href } >
+        href = { RightNavBarPagesEnum.Profile.href }
+        blank = { true } >
         <RightNavBarPagesEnum.Profile.svg />
       </RightNavItem>
 
