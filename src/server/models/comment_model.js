@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const { APICollectionsModelsEnum } = require('../utils/enums');
-const { Comments } = APICollectionsModelsEnum;
+const { Comments } = require('../utils/enums').APICollectionsModelsEnum;
 const commentModelName = Comments.modelName;
 
 const schemaOptions = {

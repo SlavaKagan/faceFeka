@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../../../utils/axiosSession';
 
 import InputWithHoveringLabel from '../../../general_reusable/input_with_hovering_label';
 import SubmitInputButton from '../../../general_reusable/submit_input';
 
-import { InputTypesEnum } from '../../../../utils/enums';
-import { setInStorage } from '../../../../utils/storageMethods';
-import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
-import { TokenStorageKey } from '../../../../utils/constants';
+import { InputTypesEnum } from '../../../../../utils/enums';
+import { setInStorage } from '../../../../../utils/storageMethods';
+import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../utils/server_endpoints';
+import { TokenStorageKey } from '../../../../../utils/constants';
 
 class LeftContent extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class LeftContent extends Component {
   }
 
   loginUser() {
-    axios.post(`${UserPaths.Users}/${UserPaths.Login}`, this.state.formdata)
+    axiosFetch.post(`${UserPaths.Users}/${UserPaths.Login}`, this.state.formdata)
       .then((result) => {
         console.log(result);
         setInStorage(TokenStorageKey, { token: result.data.token });

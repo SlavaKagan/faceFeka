@@ -316,7 +316,7 @@ nav .rightnav div a span {
 .search-friends-dropdown .results .result {
   box-sizing: border-box;
 
-  display: none;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-items: center;
@@ -733,7 +733,7 @@ nav .rightnav div a span {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 115px;
+  width: 100px;
 
   margin: 0 10px;
   font-size: 12px;

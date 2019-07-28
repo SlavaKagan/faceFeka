@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import PostStat from './post_stat';
 import PostOption from './post_option';
 
-import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../utils/enums';
-import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
+import { PrivacyOptionsEnum, PostStatOptionsEnum } from '../../../../../../utils/enums';
+import { generateDateString, generateHourString, getItemsArrayFromEnum } from '../../../../../../utils/helperMethods';
 
 class NewsFeedPost extends Component {
   constructor( props ) {
@@ -95,17 +95,15 @@ class NewsFeedPost extends Component {
     const maxSize = 498;
     const amount = this.state.attachments.length;
     const maxImagesPerLine = 3;
-    let currentIndex = 0;
     let width = 0;
 
-    return this.state.attachments.map( (attachment) => {
+    return this.state.attachments.map( (attachment, currentIndex) => {
       if (amount > 3) {
         width = currentIndex < (amount - maxImagesPerLine) ?
           maxSize / (amount - maxImagesPerLine) : maxSize / maxImagesPerLine
       } else {
         width = maxSize / amount;
       }
-      currentIndex++;
 
       return(
         <a href={attachment} target = "_blank">

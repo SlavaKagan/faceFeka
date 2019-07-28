@@ -3,8 +3,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const { Secret } = require('../utils/constants');
-const { APICollectionsModelsEnum } = require('../utils/enums');
-const { Users, Posts } = APICollectionsModelsEnum;
+const {
+  Users,
+  Posts
+} = require('../utils/enums').APICollectionsModelsEnum;
 const userModelName = Users.modelName;
 const postModelName = Posts.modelName;
 const postCollectionNameDB = Posts.collectionNameDB;

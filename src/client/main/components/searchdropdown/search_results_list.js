@@ -1,16 +1,14 @@
 import React from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../utils/axiosSession';
 
 import SearchResult from './search_result';
 
-import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../server/utils/enums'
-import { getFromStorage } from '../../../sign/utils/storageMethods';
-import { TokenStorageKey } from '../../../sign/utils/constants';
+import { APIUserPathsEndpointsEnum as UserPaths } from '../../../utils/server_endpoints';
 
 const SearchResultsList = ( { results } ) => {
   const resultItems = results.map( (result) => {
     return(
-      <div className = "result flex">
+      <div className = "result">
         <SearchResult
           result = { result }
           onClickAddFriend = { (id) => addFriend(id) } />
@@ -19,8 +17,7 @@ const SearchResultsList = ( { results } ) => {
   });
 
   const addFriend = (id) => {
-    const { token } = getFromStorage(TokenStorageKey);
-    axios.patch(`${UserPaths.Users}/${UserPaths.AddFriendship}/${id}`, null, { headers: { "Authorization": `Bearer ${token}` } })
+    axiosFetch.patch(`${UserPaths.Users}/${UserPaths.AddFriendship}/${id}`)
       .then((result) => {
         console.log(result);
       }).catch((error) => {

@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import LeftContent from './leftcontent/left_content';
 import RightContent from './rightcontent/right_content';
 
-import { SignInHeader, SignUpHeader } from '../../../utils/constants';
+import {
+  SignInHeader,
+  SignUpHeader
+} from '../../../../utils/constants';
 
 class ContentSection extends Component {
   constructor( props ) {

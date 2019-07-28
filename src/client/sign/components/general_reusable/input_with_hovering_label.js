@@ -1,5 +1,6 @@
 import React from 'react';
-import { ShortInput } from '../../utils/constants';
+
+import { ShortInput } from '../../../utils/constants';
 
 const InputWithHoveringLabel = ( { isShortInput, type, label, name, children } ) => {
   return(

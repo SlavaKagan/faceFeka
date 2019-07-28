@@ -2,7 +2,7 @@ import React from 'react';
 
 import Logo from '../../svgs/logo_svg';
 
-import { LogoHeadlineString } from '../../../utils/constants';
+import { LogoHeadlineString } from '../../../../utils/constants';
 
 const HeadlineSection = () => {
   return(

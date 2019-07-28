@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../../../../utils/axiosSession';
 
 import NewsFeedPost from './news_feed_post';
-import { APIPostPathsEndpointsEnum } from '../../../../../../../server/utils/enums';
-import { getFromStorage } from '../../../../../../sign/utils/storageMethods';
-import { TokenStorageKey } from '../../../../../../sign/utils/constants';
 import LoadingSpinner from '../../../../general_reusable/loading_spinner';
+
+import { APIPostPathsEndpointsEnum as PostPaths } from '../../../../../../utils/server_endpoints';
 
 class AllNewsFeedPosts extends Component {
   constructor(props) {
@@ -18,9 +17,8 @@ class AllNewsFeedPosts extends Component {
   };
 
   callPostsAPI() {
-    const { Posts, FriendsPosts } = APIPostPathsEndpointsEnum;
-    const { token } = getFromStorage(TokenStorageKey);
-    return axios.get(`${Posts}/${FriendsPosts}`, { headers: { "Authorization": `Bearer ${ token }` } });
+    const { Posts, FriendsPosts } = PostPaths;
+    return axiosFetch.get(`${Posts}/${FriendsPosts}`);
   };
 
   fetchAllPosts() {

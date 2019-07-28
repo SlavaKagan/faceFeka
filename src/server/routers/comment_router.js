@@ -6,7 +6,10 @@ const User = require(`../models/user_model`);
 const Comment = require(`../models/comment_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 
-const { Comments, PostSelfComments } = require('../utils/enums').APICommentPathsEndpointsEnum;
+const {
+  Comments,
+  PostSelfComments
+} = require('../utils/enums').APICommentPathsEndpointsEnum;
 
 
 /** POST A NEW COMMENT AND SET ITS AUTHOR AS THE CONNECTED AUTHENTICATED USER THAT SENT THE REQUEST **/

@@ -1,17 +1,16 @@
 import React from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../../utils/axiosSession';
 
 import RightNavItem from './right_nav_item';
 
-import { RightNavBarPagesEnum } from '../../../utils/enums';
-import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../server/utils/enums';
-import { getFromStorage, removeFromStorage } from '../../../../sign/utils/storageMethods';
-import { TokenStorageKey } from '../../../../sign/utils/constants';
+import { RightNavBarPagesEnum } from '../../../../utils/enums';
+import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../utils/server_endpoints';
+import { removeFromStorage } from '../../../../utils/storageMethods';
+import { TokenStorageKey } from '../../../../utils/constants';
 
 const RightNav = () => {
   const logout = () => {
-    const { token } = getFromStorage(TokenStorageKey);
-    axios.post(`${UserPaths.Users}/${UserPaths.Logout}`, null, { headers: { "Authorization": `Bearer ${token}` } })
+    axiosFetch.post(`${UserPaths.Users}/${UserPaths.Logout}`)
       .then(( result ) => {
       console.log(result);
       removeFromStorage(TokenStorageKey);

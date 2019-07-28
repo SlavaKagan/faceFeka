@@ -4,7 +4,15 @@ const router = new Router;
 const User = require(`../models/user_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 
-const { Users, NonFriends, Login, Logout, VerifyToken, SelfInfo, AddFriendship } = require('../utils/enums').APIUserPathsEndpointsEnum;
+const {
+  Users,
+  NonFriends,
+  Login,
+  Logout,
+  VerifyToken,
+  SelfInfo,
+  AddFriendship
+} = require('../utils/enums').APIUserPathsEndpointsEnum;
 
 /** CREATE A NEW USER **/
 router.post(`/${Users}`, async (req, res) => {
@@ -28,7 +36,7 @@ router.get(`/${Users}`, authenticateUser, async (req, res) => {
   }
 });
 
-/** GET ALL USER's NON FRIENDS, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
+/** GET ALL USER's NON FRIENDS AND FILTER NAME, REQUIRING TO BE A LOGGED IN AUTHENTICATED USER TO VIEW THIS **/
 router.get(`/${Users}/${NonFriends}/:term`, authenticateUser, async (req, res) => {
   try {
     const term = req.params.term;

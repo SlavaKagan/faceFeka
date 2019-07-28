@@ -1,9 +1,14 @@
 import { WhatsOnYourMindTextAreaPlaceHolder } from './constants';
-import { CloudinaryFieldsEnum } from '../../sign/utils/enums';
-import axios from 'axios';
+import { CloudinaryFieldsEnum } from '../utils/enums';
+import axiosFetch from './axiosSession';
 
 export const generateHourString = (createdAt) => {
-  return createdAt.substring(createdAt.indexOf('T') + 1, createdAt.indexOf('.'));
+  const fullHour = createdAt.substring(createdAt.indexOf('T') + 1, createdAt.lastIndexOf(':'));
+  let hours = (parseInt(fullHour.substring(0, 2)) + 3);
+  hours = hours < 10 ? `0${hours}` : hours;
+  const minutes = fullHour.substring(2);
+
+  return hours + minutes;
 };
 
 export const generateDateString = (createdAt) => {
@@ -20,7 +25,7 @@ export const uploadImageToCloudinary = (file) => {
   body.append("file", file);
   body.append("upload_preset", CloudinaryFieldsEnum.UploadPreset);
 
-  return axios.post(CloudinaryFieldsEnum.Endpoint, body);
+  return axiosFetch.post(CloudinaryFieldsEnum.Endpoint, body);
 };
 
 export const getItemsArrayFromEnum = (enumObject) => {

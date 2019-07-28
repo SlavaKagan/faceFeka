@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../utils/axiosSession';
 
 import SearchResultsList from './search_results_list';
 
-import { Visible } from '../../utils/constants';
-import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../server/utils/enums'
-import { getFromStorage } from '../../../sign/utils/storageMethods';
-import { TokenStorageKey } from '../../../sign/utils/constants';
+import { Visible } from '../../../utils/constants';
+import { APIUserPathsEndpointsEnum as UserPaths } from '../../../utils/server_endpoints';
 import LoadingSpinner from '../general_reusable/loading_spinner';
 
 class SearchFriendsDropdown extends Component {
@@ -23,13 +21,12 @@ class SearchFriendsDropdown extends Component {
   }
 
   getAllNonAlreadyFriends() {
-    const { token } = getFromStorage(TokenStorageKey);
-    axios.get(`${UserPaths.Users}/${UserPaths.NonFriends}/${this.state.term}`, { headers: { "Authorization": `Bearer ${ token }` } })
+    axiosFetch.get(`${UserPaths.Users}/${UserPaths.NonFriends}/${this.state.term}`)
       .then((result) => {
         console.log(result);
-        this.setState( { results: result.data } , this.setState( { isLoading: false } ) );
+        this.setState( { results: result.data, isLoading: false } );
       }).catch((error) => {
-      console.log(error);
+      console.log(error.response);
     });
   };
 
@@ -37,11 +34,15 @@ class SearchFriendsDropdown extends Component {
     this.getAllNonAlreadyFriends();
   }
 
-  render() {
+  updateResultsList() {
     if (this.state.term !== this.props.searchTerm) {
       this.setState( { term: this.props.searchTerm } , this.getAllNonAlreadyFriends);
     }
+  }
+
+  render() {
     const { isSearchFriendsVisible } = this.props;
+    this.updateResultsList();
 
     const isLoadingOrResults = this.state.isLoading ?
       <LoadingSpinner /> : <SearchResultsList results = { this.state.results }/> ;

@@ -6,7 +6,11 @@ const User = require(`../models/user_model`);
 const authenticateUser = require('../middleware/authenticate_user');
 const { PrivacyOptionsEnum } = require('../utils/enums');
 
-const { Posts, SelfPosts, FriendsPosts } = require('../utils/enums').APIPostPathsEndpointsEnum;
+const {
+  Posts,
+  SelfPosts,
+  FriendsPosts
+} = require('../utils/enums').APIPostPathsEndpointsEnum;
 
 
 /** POST A NEW POST AND SET ITS AUTHOR AS THE CONNECTED AUTHENTICATED USER THAT SENT THE REQUEST **/

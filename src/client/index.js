@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import axiosFetch from './utils/axiosSession';
 
 import NavBar from './main/components/navbar/nav_bar';
 import Sections from './main/components/sections/sections';
 import LoadingSpinner from './main/components/general_reusable/loading_spinner';
 
-import { APIUserPathsEndpointsEnum as UserPaths } from '../server/utils/enums';
-import { getFromStorage } from './sign/utils/storageMethods';
-import { TokenStorageKey } from './sign/utils/constants';
+import { APIUserPathsEndpointsEnum as UserPaths } from './utils/server_endpoints';
 import SearchFriendsDropdown from './main/components/searchdropdown/search_friends_dropdown';
 
 class App extends Component {
@@ -29,12 +27,12 @@ class App extends Component {
   }
 
   fetchLoggedIn() {
-    const tokenObj = getFromStorage(TokenStorageKey);
-    if (!tokenObj) {
-      window.location = '/sign.html';
-    }
-    const { token } = tokenObj;
-    axios.get(`${UserPaths.VerifyToken}`, { headers: { "Authorization": `Bearer ${token}` } })
+    // const tokenObj = getFromStorage(TokenStorageKey);
+    // if (!tokenObj) {
+    //   window.location = '/sign.html';
+    // }
+    // const { token } = tokenObj;
+    axiosFetch.get(`${UserPaths.VerifyToken}`)
       .then(( result ) => {
         console.log(result);
         this.setState( { loggedInUser: result.data } );

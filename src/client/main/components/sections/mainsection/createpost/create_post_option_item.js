@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Animate } from '../../../../utils/constants';
+import { Animate } from '../../../../../utils/constants';
 
 const CreatePostOptionItem = ( { onClick, isAnimate, children } ) => {
   return(

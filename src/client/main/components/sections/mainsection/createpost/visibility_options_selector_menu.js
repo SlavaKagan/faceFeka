@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import VisibilityOption from './visibility_option';
 
-import { PrivacyOptionsEnum } from '../../../../utils/enums';
-import { getItemsArrayFromEnum } from '../../../../utils/helperMethods';
-import { Visible } from '../../../../utils/constants';
+import { PrivacyOptionsEnum } from '../../../../../utils/enums';
+import { getItemsArrayFromEnum } from '../../../../../utils/helperMethods';
+import { Visible } from '../../../../../utils/constants';
 
 class VisibilityOptionsSelectorMenu extends Component {
 

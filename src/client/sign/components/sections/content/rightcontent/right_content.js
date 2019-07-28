@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../../../utils/axiosSession';
 
 import InputWithHoveringLabel from '../../../general_reusable/input_with_hovering_label';
 import SubmitInputButton from '../../../general_reusable/submit_input';
 import LoadingSpinner from '../../../../../main/components/general_reusable/loading_spinner';
 import FileInput from '../../../../../main/components/general_reusable/file_input';
 
-import { InputTypesEnum } from '../../../../utils/enums';
-import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../../server/utils/enums';
-import { setInStorage } from '../../../../utils/storageMethods';
-import { TokenStorageKey } from '../../../../utils/constants';
-import { uploadImageToCloudinary } from '../../../../../main/utils/helperMethods';
+import { InputTypesEnum } from '../../../../../utils/enums';
+import { APIUserPathsEndpointsEnum as UserPaths } from '../../../../../utils/server_endpoints';
+import { setInStorage } from '../../../../../utils/storageMethods';
+import { TokenStorageKey } from '../../../../../utils/constants';
+import { uploadImageToCloudinary } from '../../../../../utils/helperMethods';
 
 class RightContent extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class RightContent extends Component {
 
     this.setState( { isLoading: true } );
 
-    axios.post(UserPaths.Users, newUser)
+    axiosFetch.post(UserPaths.Users, newUser)
       .then((result) => {
         console.log(result);
         this.setState( { isLoading: false } );

@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosFetch from '../../../../../utils/axiosSession';
 
 import TextAreaWithGhostScrollbar from '../../../general_reusable/text_area_with_ghost_scrollbar.js';
 import CreatePostOptions from './create_post_options';
 import LoadingSpinner from '../../../general_reusable/loading_spinner';
 
-import { generateCreatePostTextAreaPlaceHolder, uploadImageToCloudinary } from '../../../../utils/helperMethods';
-import { CreatePost } from '../../../../utils/constants';
-import { APIPostPathsEndpointsEnum as PostPaths, } from '../../../../../../server/utils/enums';
-import { PrivacyOptionsEnum } from '../../../../utils/enums';
-import { getFromStorage } from '../../../../../sign/utils/storageMethods';
-import { TokenStorageKey } from '../../../../../sign/utils/constants';
+import { generateCreatePostTextAreaPlaceHolder, uploadImageToCloudinary } from '../../../../../utils/helperMethods';
+import { CreatePost } from '../../../../../utils/constants';
+import { APIPostPathsEndpointsEnum as PostPaths, } from '../../../../../utils/server_endpoints';
+import { PrivacyOptionsEnum } from '../../../../../utils/enums';
 
 class MainSectionItemCreatePost extends Component {
   constructor( props ) {
@@ -109,9 +107,7 @@ class MainSectionItemCreatePost extends Component {
 
     console.log(newPost);
 
-    const { token } = getFromStorage(TokenStorageKey);
-
-    axios.post(PostPaths.Posts, newPost, { headers: { "Authorization": `Bearer ${token}` } })
+    axiosFetch.post(PostPaths.Posts, newPost)
       .then((result) => {
         console.log(result);
         this.zeroizePostState();

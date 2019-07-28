@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
-const { APICollectionsModelsEnum } = require('../utils/enums');
-const { Posts, Comments } = APICollectionsModelsEnum;
+const {
+  Posts,
+  Comments
+} = require('../utils/enums').APICollectionsModelsEnum;
 const postModelName = Posts.modelName;
 const commentModelName = Comments.modelName;
 const commentCollectionNameDB = Comments.collectionNameDB;
