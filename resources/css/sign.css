@@ -100,7 +100,7 @@ body {
 }
 
 .headline span {
-  font-family: "Oswald";
+  font-family: "Oswald", serif;
   font-size: 55px;
   color: #fff;
   text-transform: uppercase;
@@ -189,11 +189,6 @@ body {
 
   margin-left: 30px;
   margin-top: 35px;
-}
-
-.content-container .content .left-content .footer,
-.content-container .content .right-content .footer {
-
 }
 
 .input-style {
@@ -345,18 +340,6 @@ body {
   transition: all 0.3s;
 
   cursor: pointer;
-
-  /*font-family: inherit;*/
-  /*font-size: inherit;*/
-  /*position: relative;*/
-  /*bottom: 30px;*/
-  /*width: 140px;*/
-  /*height: auto;*/
-  /*padding: 10px 10px;*/
-  /*margin-top: 10px;*/
-
-  /*border: none;*/
-  /*background-color: rgba(0, 0, 0, 0);*/
 }
 
 .inputs .upload-button:hover {

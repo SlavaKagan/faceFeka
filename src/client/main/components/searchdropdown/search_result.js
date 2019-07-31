@@ -4,7 +4,7 @@ const SearchResult = ( { result, onClickAddFriend } ) => {
   return(
     <>
       <div className = "result-pic circle">
-        <img src = { result.profilepic } className = "cover" />
+        <img src = { result.profilepic } className = "cover" alt = "profile pic"/>
       </div>
 
       <div className = "result-name">

@@ -17,26 +17,27 @@ class AllNewsFeedPosts extends Component {
   };
 
   callPostsAPI() {
-    const { Posts, FriendsPosts } = PostPaths;
-    return axiosFetch.get(`${Posts}/${FriendsPosts}`);
+
+    return ;
   };
 
   fetchAllPosts() {
     let postsArr = [];
-    this.callPostsAPI().then((result) => {
-      const data = result.data;
+    const { Posts, FriendsPosts } = PostPaths;
+    axiosFetch.get(`${Posts}/${FriendsPosts}`)
+      .then((result) => {
+        const data = result.data;
+        for (const dataItem of data) {
+          const { user, posts } = dataItem;
+          posts.forEach((post) => {
+            postsArr.push( { user, post } );
+          });
+        }
 
-      for (const dataItem of data) {
-        const { user, posts } = dataItem;
-        posts.forEach((post) => {
-          postsArr.push( { user, post } );
-        });
-      }
-
-      this.setState( { posts: postsArr }, this.setState( { isLoading: false } ) );
-    }).catch((error) => {
-      console.log(error);
-    });
+        this.setState( { posts: postsArr }, this.setState( { isLoading: false } ) );
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 
   componentWillMount() {

@@ -10,7 +10,7 @@
 html {
   scroll-behavior: smooth;
 
-  font-family: "Nanum Gothic", "Roboto", Tahoma, serif;
+  font-family: "Nanum Gothic", "Roboto", serif;
   font-size: 15px;
 
   background: #f3f5f8;
@@ -33,6 +33,11 @@ a:visited {
 textarea,
 input {
   outline: none;
+}
+
+textarea::placeholder,
+input::placeholder {
+  text-transform : capitalize;
 }
 
 textarea:focus::placeholder,
@@ -97,6 +102,8 @@ nav {
 
 /* *** LIST *** */
 
+/* *** LEFT-NAV *** */
+
 nav .leftnav {
   list-style-type: none;
 
@@ -106,12 +113,6 @@ nav .leftnav {
   justify-content: flex-start;
 
   margin-left: 5%;
-}
-
-/* *** LEFT-NAV *** */
-
-nav .leftnav {
-
 }
 
 /* *** LOGO *** */
@@ -583,8 +584,6 @@ nav .rightnav div a span {
   resize: none;
   border: hidden;
 
-  text-transform : capitalize;
-
   transition: 0.2s;
 }
 
@@ -946,37 +945,6 @@ nav .rightnav div a span {
   border-color: #555 transparent transparent transparent;
 }
 
-.tooltip-text-bottom {
-  visibility: hidden;
-
-  font-family: inherit;
-  font-size: 13px;
-  color: #ffffff;
-
-  background-color: #555;
-
-  text-align: center;
-  padding: 5px 15px;
-  border-radius: 20px;
-
-  position: absolute;
-  top: 70px;
-
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip-text-bottom::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent #555 transparent;
-}
-
 /* --------------------------- */
 /* GENERAL */
 /* --------------------------- */
@@ -994,12 +962,7 @@ nav .rightnav div a span {
   opacity: 1;
 }
 
-.flex {
-  display: flex !important;
-}
-
 .selected {
-  /*color: #fff;*/
   background-color: rgba(52, 203, 86, 0.56);
 }
 

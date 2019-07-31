@@ -12,7 +12,7 @@ export const RightNavBarPagesEnum = {
   Profile: {
     name: 'Game',
     svg: ProfileSVG,
-    href: "localhost:8000/index.html"
+    href: "http://localhost:8000/index.html"
   },
   Friends: {
     name: 'Friends',

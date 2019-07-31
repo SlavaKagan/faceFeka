@@ -27,17 +27,13 @@ class App extends Component {
   }
 
   fetchLoggedIn() {
-    // const tokenObj = getFromStorage(TokenStorageKey);
-    // if (!tokenObj) {
-    //   window.location = '/sign.html';
-    // }
-    // const { token } = tokenObj;
-    axiosFetch.get(`${UserPaths.VerifyToken}`)
+    axiosFetch.get(UserPaths.VerifyToken)
       .then(( result ) => {
         console.log(result);
         this.setState( { loggedInUser: result.data } );
       }).catch((error) => {
         console.log(error);
+        window.location = '/sign.html';
       });
   }
 

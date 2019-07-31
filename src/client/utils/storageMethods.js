@@ -12,11 +12,11 @@ export const getFromStorage = (tokenStorageKey) => {
     if (tokenObj) {
       return JSON.parse(tokenObj);
     }
-    return null;
+    return '';
 
   } catch (e) {
     console.log(e);
-    return null;
+    return '';
   }
 };
 

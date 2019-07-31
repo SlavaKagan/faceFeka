@@ -2,7 +2,7 @@
   "name": "facefekaproject",
   "version": "1.0.0",
   "description": "",
-  "main": "client/sss.js",
+  "main": "client/index.js",
   "dependencies": {
     "@babel/core": "^7.5.4",
     "@babel/plugin-transform-runtime": "^7.5.0",
@@ -27,7 +27,6 @@
     "react-router-dom": "^5.0.1",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",
-    "validator": "^11.1.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
@@ -38,10 +37,8 @@
   "scripts": {
     "start": "node src/server/server.js",
     "dev": "npm run build && node src/server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --devtool source-map --progress --colors --config webpack.config.js"
   },
-  "proxy": "http://localhost:5000/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YossiSaadi/faceFeka.git"
